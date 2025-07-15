@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 青少年计划</title>
+    <link rel="icon" type="image/png" href="../images/ai-youth-ico.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .glass-card {
+            background: rgba(255,255,255,0.35);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(139, 69, 19, 0.10);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 2rem;
+            min-height: 80vh;
+        }
+        .main-container {
+            padding-top: 1rem;
+        }
+        .menu-title {
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 1.5rem;
+        }
+        .accordion-button {
+            background-color: transparent !important;
+            color: #8B4513 !important;
+            font-weight: 600;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+        }
+        .accordion-body .nav-link {
+            color: #D2691E;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .accordion-body .nav-link::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: #D2691E;
+            border-radius: 50%;
+        }
+        .accordion-body .nav-link.active, .accordion-button.nav-link.active {
+            background-color: rgba(210, 105, 30, 0.1);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            color: #8B4513;
+        }
+        strong {
+          color: #D2691E;
+        }
+        ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../images/ai-youth-logo.png" alt="AI 青少年标志" style="height: 40px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切换导航">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">关于我们</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="our-approach.html">我们的方法</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                项目
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="spring-holiday-program.html">春季假期项目</a></li>
+                                <li><a class="dropdown-item" href="winter-holiday-program.html">冬季假期项目</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="activities.html">活动</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <div class="container main-container">
+        <div class="row">
+            <!-- 左侧菜单 -->
+            <div class="col-md-4">
+                <div class="glass-card">
+                    <h2 class="menu-title">项目概述</h2>
+                    <div class="accordion" id="programAccordion">
+
+                        <!-- 项目概览 -->
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header">
+                                <a href="#overview" class="accordion-button nav-link fs-5 active">1. 项目概览</a>
+                            </h2>
+                        </div>
+
+                        <!-- 模块详情 -->
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    2. 模块详情
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#programAccordion">
+                                <div class="accordion-body">
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link" href="#module1">模块 1: 户外与生活技能</a>
+                                        <a class="nav-link" href="#module2">模块 2: 人工智能与计算机技能</a>
+                                        <a class="nav-link" href="#module3">模块 3: 领导力与团队合作</a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 项目形式 -->
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    3. 项目形式
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#programAccordion">
+                                <div class="accordion-body">
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link" href="#formats-after-school">课后项目</a>
+                                        <a class="nav-link" href="#formats-holiday">假期项目</a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 关键差异点 -->
+                        <div class="accordion-item bg-transparent border-0">
+                            <h2 class="accordion-header">
+                                <a href="#differentiators" class="accordion-button nav-link fs-5">4. 关键差异点</a>
+                            </h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧内容 -->
+            <div class="col-md-8">
+                <div class="glass-card" id="content-area">
+
+                    <!-- 概览内容 -->
+                    <div id="overview" class="content-section active">
+                        <h3>1. 项目概览</h3>
+                        <p><strong>项目名称:</strong> AI 青少年创新者</p>
+                        <p><strong>目标群体:</strong> 儿童和青少年 (7-15 岁)</p>
+                        <p><strong>愿景:</strong> 赋予下一代平衡的未来技能。我们旨在培养更健康的习惯，减少屏幕时间，培养必要的生活技能，同时为他们提供理解和利用人工智能的知识。我们的目标是创造全面发展的个体，他们是技术的主人，而不是技术的奴隶。</p>
+                        <p><strong>项目结构:</strong> 项目分为三个核心模块，将整合到课后和假期项目中。</p>
+                        <ul>
+                            <li>模块 1: 户外与生活技能 - 由 Prasad 和 Melvin 领导</li>
+                            <li>模块 2: 人工智能与计算机技能 - 由 Tony 和 Melvin 领导</li>
+                            <li>模块 3: 领导力与团队合作 - 融入所有活动</li>
+                        </ul>
+                    </div>
+
+                    <!-- 模块 1 内容 -->
+                    <div id="module1" class="content-section">
+                        <h3>模块 1: 户外与生活技能</h3>
+                        <p><strong>目标:</strong> 培养实用的生活技能、韧性和对户外的欣赏。此模块受童子军和幼童计划的启发。</p>
+                        <p><strong>活动:</strong></p>
+                        <ul>
+                            <li><strong>户外冒险:</strong>
+                                <ul>
+                                    <li>徒步旅行和自然漫步</li>
+                                    <li>基本定向和地图阅读</li>
+                                    <li>打结和搭建庇护所</li>
+                                    <li>露营基础知识 (假期项目)</li>
+                                </ul>
+                            </li>
+                            <li><strong>生活技能工作坊:</strong>
+                                <ul>
+                                    <li>基本烹饪技能 (由 Melvin 领导)</li>
+                                    <li>急救基础知识</li>
+                                    <li>园艺和了解自然</li>
+                                </ul>
+                            </li>
+                            <li><strong>团队挑战:</strong>
+                                <ul>
+                                    <li>障碍课程</li>
+                                    <li>基于团队的问题解决游戏</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 模块 2 内容 -->
+                    <div id="module2" class="content-section">
+                        <h3>模块 2: 人工智能与计算机技能</h3>
+                        <p><strong>目标:</strong> 解密人工智能并教授基本计算机技能。重点是理解概念和创造性应用，而不仅仅是编码。</p>
+                        <p><strong>活动:</strong></p>
+                        <ul>
+                            <li><strong>计算机基础知识:</strong>
+                                <ul>
+                                    <li>了解计算机硬件和软件</li>
+                                    <li>安全有效的互联网使用</li>
+                                    <li>数字公民入门</li>
+                                </ul>
+                            </li>
+                            <li><strong>人工智能脱机:</strong>
+                                <ul>
+                                    <li>互动游戏和活动，解释人工智能概念，如机器学习、神经网络和算法，而无需使用计算机。</li>
+                                </ul>
+                            </li>
+                            <li><strong>人工智能行动:</strong>
+                                <ul>
+                                    <li>介绍可视化编程语言 (例如 Scratch)，创建简单的人工智能驱动游戏和故事。</li>
+                                    <li>使用适合年龄的人工智能工具进行创意项目的工作坊 (例如生成艺术、音乐或故事)。</li>
+                                    <li>了解人工智能在日常生活中的应用 (例如推荐系统、虚拟助手)。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 模块 3 内容 -->
+                    <div id="module3" class="content-section">
+                        <h3>模块 3: 领导力与团队合作</h3>
+                        <p><strong>目标:</strong> 培养领导力、沟通技能以及团队合作的能力。此模块融入所有活动。</p>
+                        <p><strong>活动:</strong></p>
+                        <ul>
+                            <li><strong>领导角色:</strong>
+                                <ul>
+                                    <li>为年长的孩子 (如 Melvin) 提供担任巡逻队长的领导角色机会。</li>
+                                    <li>在活动中轮流担任领导职责。</li>
+                                </ul>
+                            </li>
+                            <li><strong>协作项目:</strong>
+                                <ul>
+                                    <li>团队项目，涵盖户外和人工智能模块。</li>
+                                    <li>小组演示和分享会。</li>
+                                </ul>
+                            </li>
+                            <li><strong>指导:</strong>
+                                <ul>
+                                    <li>年长的参与者指导年轻的参与者。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 项目形式 -->
+                    <div id="formats-after-school" class="content-section">
+                        <h3>课后项目</h3>
+                        <p><strong>频率:</strong> 每周 2-3 次</p>
+                        <p><strong>时长:</strong> 每次 1.5 - 2 小时</p>
+                        <p><strong>结构:</strong> 每周活动混合了所有三个模块。</p>
+                    </div>
+
+                    <!-- 假期项目 -->
+                    <div id="formats-holiday" class="content-section">
+                        <h3>假期项目</h3>
+                        <p><strong>频率:</strong> 学校假期期间的全天或半天营地</p>
+                        <p><strong>时长:</strong> 1-2 周</p>
+                        <p><strong>结构:</strong> 更具沉浸感和项目导向，重点是更大的项目或露营旅行。</p>
+                    </div>
+
+                    <!-- 关键差异点 -->
+                    <div id="differentiators" class="content-section">
+                        <h3>4. 关键差异点</h3>
+                        <ul>
+                            <li><strong>全面方法:</strong> 我们不仅仅是一个编码营或户外营。我们提供一个平衡的项目，促进全面发展。</li>
+                            <li><strong>经验丰富的导师:</strong> 一个独特的团队，包括认证培训师、童子军领袖和青少年领袖。</li>
+                            <li><strong>关注生活技能:</strong> 我们教授的技能不仅对技术职业有价值，对生活也有帮助。</li>
+                            <li><strong>人工智能的善用:</strong> 我们教授人工智能，重点是伦理考虑和使用人工智能解决现实问题。</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionNavLinks = document.querySelectorAll('#programAccordion .nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // Set initial active state
+            const initialActiveLink = document.querySelector('#programAccordion .nav-link[href="#overview"]');
+            if(initialActiveLink) {
+                initialActiveLink.classList.add('active');
+            }
+
+            accordionNavLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // Allow default behavior for collapse buttons, but prevent for content links
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            // Update content
+                            contentSections.forEach(section => {
+                                section.classList.remove('active');
+                            });
+                            targetElement.classList.add('active');
+
+                            // Update menu highlight
+                            accordionNavLinks.forEach(navLink => {
+                                navLink.classList.remove('active');
+                            });
+                            this.classList.add('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
