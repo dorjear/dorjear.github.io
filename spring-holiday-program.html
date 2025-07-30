@@ -94,7 +94,14 @@
                             <li>Please bring an Opal card if dropping off before 8:00 AM.</li>
                             <li>Detailed drop-off and pick-up instructions will be provided after registration.</li>
                         </ul>
-                        <a href="https://buy.stripe.com/cNi8wQ2EHbee6052SK1Nu02" class="btn btn-primary btn-lg mt-3" target="_blank">Register</a>
+                        <!-- <a href="https://buy.stripe.com/cNi8wQ2EHbee6052SK1Nu02" class="btn btn-primary btn-lg mt-3" target="_blank">Register</a> -->
+                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+                        <stripe-buy-button
+                        buy-button-id="buy_btn_1RqaGlL5d1aQlvLBxabWi6T4"
+                        publishable-key="pk_live_51ORWMCL5d1aQlvLB8XAMkgxiu8xaKWvT3QKMRcXBJ4r5WCmKitgoNWZmR6zGpwyA4bImcl7Cr46RpKJwuaYJ3o0z00lIjaVZUB"
+                        >
+                        </stripe-buy-button>
                     </div>
                     <hr>
                     <!-- Monday Content -->
