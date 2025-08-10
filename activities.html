@@ -3,204 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Activities - AI Youth Innovators</title>
+    <title>Activities - AI Youth Innovators</title>
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <style>
-        .activity-card {
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        techBlue: '#3498db',
+                        energyOrange: '#e67e22',
+                        natureGreen: '#2ecc71',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
         }
-        .activity-title {
-            color: #8B4513;
-            font-weight: bold;
+    </script>
+    <style type="text/css">
+        /* Custom CSS */
+        :root {
+            --tech-blue: #3498db;
+            --energy-orange: #e67e22;
+            --nature-green: #2ecc71;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Card hover effect */
+        .activity-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Image scale effect */
+        .scale-on-hover {
+            transition: transform 0.5s ease;
+        }
+        
+        .activity-card:hover .scale-on-hover {
+            transform: scale(1.1);
+        }
+        
+        /* Category pills */
+        .category-pill {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-pill:hover, .category-pill.active {
+            background-color: var(--tech-blue);
+            color: white;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-    <header class="glass-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" style="height: 40px;">
+    <!-- Navigation -->
+    <header class="glass fixed w-full z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="our-approach.html">Our Approach</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Programs
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="spring-holiday-program.html">Spring Holiday Program</a></li>
-                                <li><a class="dropdown-item" href="winter-holiday-program.html">Winter Holiday Program</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link active" href="activities.html">Activities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    </ul>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <div class="relative group">
+                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                            Programs
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <div class="py-1">
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Winter Holiday Program</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="activities.html" class="text-techBlue font-semibold">Activities</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
                 </div>
+                
+                <!-- Mobile Navigation Toggle -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="index.html" class="block py-2 text-gray-800">Home</a>
+                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                    <span>Programs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="mobile-programs-menu" class="hidden pl-4">
+                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
+                </div>
+                <a href="activities.html" class="block py-2 text-techBlue font-semibold">Activities</a>
+                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
             </div>
         </nav>
     </header>
 
-    <main class="container py-5">
-        <div class="glass-card p-5">
-            <h1 class="menu-title text-center mb-5">Our Activities</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Setting Tents (1-2 hours)</h4>
-                        <p>Learn the essential skill of setting up a tent, a must-know for any camping adventure.</p>
-                    </div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Hero Section -->
+        <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Our Activities</h1>
+            <p class="text-lg text-gray-700 max-w-4xl">
+                We offer a diverse range of activities designed to develop both practical skills and digital literacy. Our programs balance outdoor adventures, life skills, and technology education to create well-rounded individuals who can thrive in the AI era.
+            </p>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="mb-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button class="category-pill px-4 py-2 rounded-full glass active" data-category="all">All Activities</button>
+                <button class="category-pill px-4 py-2 rounded-full glass" data-category="outdoor">Outdoor</button>
+                <button class="category-pill px-4 py-2 rounded-full glass" data-category="cooking">Cooking</button>
+                <button class="category-pill px-4 py-2 rounded-full glass" data-category="digital">Digital Skills</button>
+                <button class="category-pill px-4 py-2 rounded-full glass" data-category="ai">AI Tools</button>
+            </div>
+        </section>
+
+        <!-- Activities Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Outdoor Activities -->
+            <div class="activity-card glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/tent.jpeg" alt="Tent Building" class="w-full h-full object-cover scale-on-hover">
                 </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Tying Knots (1-2 hours)</h4>
-                        <p>Master a variety of useful knots for everything from securing gear to outdoor survival.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Cooking: Burger (1-2 hours)</h4>
-                        <p>From patty to bun, learn how to cook the perfect, juicy burger from scratch.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Cooking: Spaghetti Bolognese (2-3 hours)</h4>
-                        <p>Dive into Italian cuisine and learn to prepare a delicious and hearty Spaghetti Bolognese.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Digital Skills (1-2 hours)</h4>
-                        <p>Get hands-on with essential tools like Email, Calendar, Google Drive, and Google Maps.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Computer Fundamentals</h4>
-                        <p>Understand the basics of hardware, software, and how to use the internet safely and effectively.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">AI Tools: ChatGPT & Claude</h4>
-                        <p>Explore the power of AI with hands-on exercises, turning these tools into your personal math tutor.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Build Your First AI App</h4>
-                        <p>Create your very first AI application using the beginner-friendly platform, PartyRock.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Jogging (1-2 hours)</h4>
-                        <p>Improve your fitness with proper jogging techniques, warm-ups, and cool-down stretches.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Indoor Rock Climbing (2-3 hours)</h4>
-                        <p>Challenge yourself in a safe environment, learning climbing techniques and building confidence.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Cycling (2-3 hours)</h4>
-                        <p>Learn bike safety and enjoy a group ride, exploring new routes and improving your cycling skills.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Kayaking (2-3 hours)</h4>
-                        <p>Hit the water and learn fundamental kayaking skills, from paddling to turning.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Survival Skills (2-3 hours)</h4>
-                        <p>Gain confidence in the outdoors by learning to build shelters, find water, and basic first aid.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Team-Building Games (1-2 hours)</h4>
-                        <p>Develop leadership and collaboration skills through a series of fun and engaging group challenges.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Nature Exploration (2-3 hours)</h4>
-                        <p>Discover the beauty of local flora and fauna, learning about the natural world around us.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Induction to First Aid</h4>
-                        <p>Learn the foundational principles of first aid and how to respond in an emergency.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Host Your Own Meeting</h4>
-                        <p>Learn how to professionally host virtual meetings using Zoom and Google Meet.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Games & Strategy</h4>
-                        <p>Have fun while sharpening your mind with Chess, card games, and other board games.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Online Marketplace</h4>
-                        <p>Discover how to safely buy and sell items online using Gumtree and Facebook Marketplace.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Build Your Website</h4>
-                        <p>Get a hands-on introduction to web development and build your own personal website.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Build Your Own Store</h4>
-                        <p>Learn the basics of e-commerce and create your own online store to sell products.</p>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-                    <div class="activity-card">
-                        <h4 class="activity-title">Build Your YouTube Channel</h4>
-                        <p>From content creation to publishing, learn the steps to launch your own YouTube channel.</p>
-                    </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Tent Building</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
+                    <p class="text-gray-700">
+                        Learn how to set up different types of tents and shelters, understanding the importance of proper site selection and tent orientation for various weather conditions.
+                    </p>
                 </div>
             </div>
-        </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/knots.jpg" alt="Knot Tying" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Knot Tying</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1 hour</p>
+                    <p class="text-gray-700">
+                        Master essential knots for outdoor activities, including the bowline, clove hitch, and taut-line hitch, understanding when and how to use each knot effectively.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/tarp.jpeg" alt="Tarp Setup" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Tarp Setup</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1 hour</p>
+                    <p class="text-gray-700">
+                        Learn various tarp configurations for different weather conditions and purposes, from simple sun shades to complex rain shelters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/bushwalk.jpg" alt="Nature Exploration" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Nature Exploration</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 2 hours</p>
+                    <p class="text-gray-700">
+                        Guided bushwalks to identify local flora and fauna, learn navigation skills, and understand the principles of Leave No Trace outdoor ethics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/firstaid.jpg" alt="First Aid Basics" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">First Aid Basics</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
+                    <p class="text-gray-700">
+                        Learn essential first aid skills including treating minor injuries, recognizing emergency situations, and understanding when and how to seek help.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="outdoor">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/warmup.jpeg" alt="Team Building Games" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Team Building Games</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1 hour</p>
+                    <p class="text-gray-700">
+                        Engage in fun, collaborative activities designed to build trust, improve communication, and develop problem-solving skills in a group setting.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cooking Activities -->
+            <div class="activity-card glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50" data-category="cooking">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-pen.jpg" alt="Outdoor Cooking" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Outdoor Cooking</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 2 hours</p>
+                    <p class="text-gray-700">
+                        Learn to prepare simple, nutritious meals using outdoor cooking methods, understanding food safety and meal planning for outdoor activities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Digital Skills Activities -->
+            <div class="activity-card glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50" data-category="digital">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-labtop.jpeg" alt="Computer Basics" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Computer Basics</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
+                    <p class="text-gray-700">
+                        Introduction to computer hardware, software, and operating systems, with hands-on practice in file management, internet navigation, and basic troubleshooting.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="digital">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-labtop2.webp" alt="Digital Collaboration Tools" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Digital Collaboration Tools</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
+                    <p class="text-gray-700">
+                        Learn to use cloud-based collaboration tools like Google Workspace and Microsoft 365, understanding how to share documents, collaborate in real-time, and manage digital projects.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="digital">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-pad.webp" alt="Website Building" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Website Building</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 2 hours</p>
+                    <p class="text-gray-700">
+                        Introduction to website creation using user-friendly platforms like Wix or WordPress, learning about design principles, content organization, and basic HTML/CSS concepts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- AI Tools Activities -->
+            <div class="activity-card glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50" data-category="ai">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-labtop3.webp" alt="AI Exploration" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">AI Exploration</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
+                    <p class="text-gray-700">
+                        Introduction to artificial intelligence concepts and applications, with hands-on experience using AI tools like ChatGPT, DALL-E, and Midjourney for creative and educational purposes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-card glass rounded-2xl overflow-hidden animate-section" data-category="ai">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/students-labtop.jpeg" alt="Responsible AI Use" class="w-full h-full object-cover scale-on-hover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-techBlue mb-2">Responsible AI Use</h3>
+                    <p class="text-sm text-gray-500 mb-3">Duration: 1 hour</p>
+                    <p class="text-gray-700">
+                        Learn about ethical considerations in AI use, including privacy, bias, and responsible consumption of AI-generated content, with practical guidelines for safe and effective AI tool use.
+                    </p>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="footer mt-auto py-3 bg-dark text-white">
-        <div class="container text-center">
-            <a href="about.html" class="text-white me-3">About Us</a>
-            <a href="contact.html" class="text-white me-3">Contact Us</a>
-            <a href="our-approach.html" class="text-white">Our Approach</a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10 mb-2">
+                    <p class="text-sm text-gray-400">Empowering the next generation with balanced skills</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="about.html" class="text-white hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-white hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="spring-holiday-program.html" class="text-white hover:text-techBlue transition-colors">Spring Program</a>
+                    <a href="winter-holiday-program.html" class="text-white hover:text-techBlue transition-colors">Winter Program</a>
+                    <a href="contact.html" class="text-white hover:text-techBlue transition-colors">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>&copy; 2023 AI Youth Innovators. All rights reserved. | @Candy Solutions</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileProgramsToggle = document.getElementById('mobile-programs-toggle');
+        const mobileProgramsMenu = document.getElementById('mobile-programs-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileProgramsToggle.addEventListener('click', () => {
+            mobileProgramsMenu.classList.toggle('hidden');
+        });
+        
+        // Category filter
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryPills = document.querySelectorAll('.category-pill');
+            const activityCards = document.querySelectorAll('.activity-card');
+            
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    // Update active state
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    
+                    const category = pill.getAttribute('data-category');
+                    
+                    // Filter activities
+                    activityCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Initialize AOS animation library
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out',
+                once: true,
+                offset: 50
+            });
+        });
+    </script>
 </body>
 </html>

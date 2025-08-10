@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Youth Innovators</title>
+    <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
+    
+    <!-- TailwindCSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Base Styles -->
+    <style>
+        :root {
+            --color-primary: #2563EB; /* 科技蓝 */
+            --color-secondary: #F97316; /* 活力橙 */
+            --color-tertiary: #10B981; /* 自然绿 */
+            --color-text: #1F2937;
+            --color-background: #F9FAFB;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        main {
+            flex: 1;
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Card Hover Effect */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Image Hover Effect */
+        .hover-zoom {
+            overflow: hidden;
+        }
+        
+        .hover-zoom img {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 glass">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-primary transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Our Approach</a>
+                    
+                    <!-- Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center font-medium text-gray-800 hover:text-primary transition-colors">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 glass rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
+                            <a href="spring-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-primary transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-primary transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-primary transition-colors">中文</a>
+                </div>
+                
+                <!-- Mobile Navigation Button -->
+                <button class="lg:hidden text-gray-800 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div class="lg:hidden hidden absolute top-full left-0 w-full glass py-4 px-4" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-primary transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Our Approach</a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div class="relative">
+                        <button class="flex items-center font-medium text-gray-800 hover:text-primary transition-colors w-full justify-between" id="mobile-dropdown-button">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="hidden mt-2 pl-4 border-l-2 border-gray-300 space-y-2" id="mobile-dropdown">
+                            <a href="spring-holiday-program.html" class="block py-1 text-gray-800 hover:text-primary transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block py-1 text-gray-800 hover:text-primary transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-primary transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-primary transition-colors">中文</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page content will go here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10 mb-2">
+                    <p class="text-gray-400">Empowering the next generation with balanced skills</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact Us</a>
+                    <a href="our-approach.html" class="text-gray-300 hover:text-white transition-colors">Our Approach</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 AI Youth Innovators. All rights reserved.</p>
+                <p class="mt-1">Created by @Candy Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Mobile Dropdown Toggle
+        document.getElementById('mobile-dropdown-button').addEventListener('click', function() {
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            mobileDropdown.classList.toggle('hidden');
+        });
+        
+        // Initialize Framer Motion animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll animations here
+            const animateOnScroll = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            
+            const observer = new IntersectionObserver(animateOnScroll, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '-50px'
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

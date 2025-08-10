@@ -5,198 +5,559 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winter Holiday Program - AI Youth Innovators</title>
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <style>
-        .day-card {
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        techBlue: '#3498db',
+                        energyOrange: '#e67e22',
+                        natureGreen: '#2ecc71',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
         }
-        .day-title {
-            color: #8B4513;
-            font-weight: bold;
-            border-bottom: 2px solid rgba(139, 69, 19, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+    </script>
+    <style type="text/css">
+        /* Custom CSS */
+        :root {
+            --tech-blue: #3498db;
+            --energy-orange: #e67e22;
+            --nature-green: #2ecc71;
         }
-        .session-title {
-            font-weight: bold;
-            color: #D2691E;
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Card hover effect */
+        .activity-card {
+            transition: all 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Promo badge */
+        .promo-badge {
+            background: linear-gradient(90deg, var(--energy-orange), var(--tech-blue));
+            color: white;
+            transform: rotate(-2deg);
+        }
+        
+        /* Number counter */
+        .number-highlight {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--tech-blue), var(--nature-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-    <header class="glass-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" style="height: 40px;">
+    <!-- Navigation -->
+    <header class="glass fixed w-full z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="our-approach.html">Our Approach</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Programs
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="spring-holiday-program.html">Spring Holiday Program</a></li>
-                                <li><a class="dropdown-item" href="winter-holiday-program.html">Winter Holiday Program</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    </ul>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <div class="relative group">
+                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                            Programs
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <div class="py-1">
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold text-techBlue">Winter Holiday Program</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
                 </div>
+                
+                <!-- Mobile Navigation Toggle -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="index.html" class="block py-2 text-gray-800">Home</a>
+                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                    <span>Programs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="mobile-programs-menu" class="hidden pl-4">
+                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-techBlue font-semibold">Winter Holiday Program</a>
+                </div>
+                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
+                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
             </div>
         </nav>
     </header>
 
-    <main class="container py-5">
-        <div class="glass-card p-5">
-            <h1 class="menu-title text-center mb-4">Winter Holiday Program Schedule</h1>
-
-            <div class="text-center p-4 rounded mb-5" style="background: rgba(255,255,255,0.2);">
-                <p class="lead" style="font-weight: 500;">This session is tailor-made for kids and youth, using a kid-friendly approach to make learning fun and engaging. Many activities will be presented by Melvin, a well-loved star Scout patrol leader who is a hit with our students!</p>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Hero Section -->
+        <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up">
+            <div class="relative">
+                <div class="promo-badge absolute -top-4 -right-4 px-4 py-2 rounded-lg font-bold text-sm md:text-base shadow-lg">
+                    Early Bird Discount: 15% OFF
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Winter Holiday Program 2023</h1>
+                <p class="text-lg text-gray-700 max-w-4xl mb-6">
+                    Join us this winter for an exciting blend of technology, creativity, and outdoor activities. Our program is designed to help children develop essential digital skills while maintaining a healthy balance with physical activities and social interaction.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#register" class="bg-techBlue hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                        Register Now
+                    </a>
+                    <a href="#schedule" class="bg-white hover:bg-gray-100 text-techBlue font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg border border-techBlue">
+                        View Schedule
+                    </a>
+                </div>
             </div>
+        </section>
 
-            <div class="text-center p-4 rounded mb-5" style="background: rgba(210, 105, 30, 0.1);">
-                <h4 class="menu-title">Last Minute Promotion!</h4>
-                <h3 style="color: #D2691E; font-weight: bold;">A$9.90 <span class="fs-5">per half-day session</span></h3>
-                <p class="lead mb-0">Original Price: <del>A$39.90</del></p>
-                <p class="mt-2">You can register for any one or more sessions to suit your schedule!</p>
+        <!-- Program Overview -->
+        <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Program Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+                    <div class="number-highlight mb-2">5</div>
+                    <p class="text-lg font-semibold text-gray-700">Days of Learning</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="number-highlight mb-2">20+</div>
+                    <p class="text-lg font-semibold text-gray-700">Engaging Activities</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                    <div class="number-highlight mb-2">10:1</div>
+                    <p class="text-lg font-semibold text-gray-700">Student-Teacher Ratio</p>
+                </div>
+            </div>
+            <p class="text-lg text-gray-700">
+                Our Winter Holiday Program runs from <span class="font-semibold">July 10-14, 2023</span>, from <span class="font-semibold">9:00 AM to 3:30 PM</span> daily. The program is designed for children aged 8-14 and includes a balanced mix of technology workshops, creative projects, and outdoor activities.
+            </p>
+        </section>
+
+        <!-- Parent Information -->
+        <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up" data-aos-delay="150" id="parent-info">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Parent Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass rounded-2xl p-6 h-full">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                            <i class="fas fa-utensils text-techBlue text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">What to Bring</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-techBlue mt-1 mr-2"></i>
+                            <span>Lunch and snacks (no nuts please)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-techBlue mt-1 mr-2"></i>
+                            <span>Water bottle</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-techBlue mt-1 mr-2"></i>
+                            <span>Hat and sunscreen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-techBlue mt-1 mr-2"></i>
+                            <span>Comfortable clothing and closed shoes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-techBlue mt-1 mr-2"></i>
+                            <span>Laptop (optional - we provide equipment)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass rounded-2xl p-6 h-full">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                            <i class="fas fa-info-circle text-energyOrange text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Important Notes</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-energyOrange mt-1 mr-2"></i>
+                            <span>Drop-off: 8:30-9:00 AM, Pick-up: 3:30-4:00 PM</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-energyOrange mt-1 mr-2"></i>
+                            <span>Extended care available (additional fee)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-energyOrange mt-1 mr-2"></i>
+                            <span>All staff have Working with Children Checks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-energyOrange mt-1 mr-2"></i>
+                            <span>First aid trained staff on-site</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-energyOrange mt-1 mr-2"></i>
+                            <span>Please inform us of any allergies or special needs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Schedule -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="200" id="schedule">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Daily Schedule</h2>
+            
+            <!-- Day 1 -->
+            <div class="glass rounded-3xl p-8 mb-8" data-aos="fade-up" data-aos-delay="50">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Day 1: Computer Fundamentals & Digital Citizenship</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Morning Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-laptop-code text-techBlue text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Morning</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Computer Basics</h5>
+                                <p class="text-gray-700">Introduction to computer hardware, software, and operating systems. Hands-on exploration of different devices and their components.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Digital Citizenship</h5>
+                                <p class="text-gray-700">Learning about online safety, privacy, and responsible digital behavior through interactive activities and discussions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afternoon Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="150">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-energyOrange text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Afternoon</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Team Building Games</h5>
+                                <p class="text-gray-700">Fun outdoor activities designed to help students get to know each other and develop teamwork skills.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Digital Art Basics</h5>
+                                <p class="text-gray-700">Introduction to digital drawing tools and techniques. Students will create their first digital artwork.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="text-center p-4 rounded" style="background: rgba(255,255,255,0.3);">
-                <h4 class="menu-title">Instructions for Parents</h4>
-                <p class="mb-1"><strong>AM Session:</strong> Drop off before 8am or after 9am. Pick up at 1pm.</p>
-                <p class="mb-1"><strong>PM Session:</strong> Drop off at 1pm. Pick up at 5pm.</p>
-                <p class="mb-1">We provide a sandwich for lunch, but you are welcome to bring your own.</p>
-                <p class="mb-0">Detailed instructions will be provided upon registration. Chess, card, and board games will be available between activities.</p>
+            <!-- Day 2 -->
+            <div class="glass rounded-3xl p-8 mb-8" data-aos="fade-up" data-aos-delay="50">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Day 2: AI Exploration & Creative Thinking</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Morning Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-robot text-techBlue text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Morning</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">AI Fundamentals</h5>
+                                <p class="text-gray-700">Introduction to artificial intelligence concepts through age-appropriate examples and interactive demonstrations.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">AI Art Creation</h5>
+                                <p class="text-gray-700">Exploring AI-assisted art tools to create unique digital artwork with guidance on prompt engineering.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afternoon Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-lightbulb text-energyOrange text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Afternoon</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Creative Problem Solving</h5>
+                                <p class="text-gray-700">Engaging in design thinking activities that encourage innovative approaches to everyday challenges.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Outdoor STEM Challenges</h5>
+                                <p class="text-gray-700">Participating in hands-on outdoor activities that apply science and engineering principles in fun ways.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div data-tf-live="01JZY5QM0ZMBFE73K9A9BG7MJD"></div><script src="https://embed.typeform.com/next/embed.js"></script>
+            
+            <!-- Day 3 -->
+            <div class="glass rounded-3xl p-8 mb-8" data-aos="fade-up" data-aos-delay="50">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Day 3: Collaboration Tools & Team Projects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Morning Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-tasks text-techBlue text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Morning</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Digital Collaboration</h5>
+                                <p class="text-gray-700">Learning to use online collaboration tools like Google Docs, Slides, and digital whiteboards for team projects.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Project Planning</h5>
+                                <p class="text-gray-700">Introduction to project management concepts and tools. Students will plan their team projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afternoon Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-project-diagram text-energyOrange text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Afternoon</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Team Project Kickoff</h5>
+                                <p class="text-gray-700">Students begin working on their team projects, applying the collaboration tools they learned in the morning.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Outdoor Team Challenges</h5>
+                                <p class="text-gray-700">Physical activities that reinforce teamwork, communication, and problem-solving skills.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 4 -->
+            <div class="glass rounded-3xl p-8 mb-8" data-aos="fade-up" data-aos-delay="50">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Day 4: Web Design & Digital Storytelling</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Morning Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-globe text-techBlue text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Morning</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Web Design Basics</h5>
+                                <p class="text-gray-700">Introduction to HTML and CSS through user-friendly platforms. Students will learn about web page structure and styling.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Building a Simple Website</h5>
+                                <p class="text-gray-700">Hands-on workshop where students create their first web page using drag-and-drop tools and basic code.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afternoon Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-book-open text-energyOrange text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Afternoon</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Digital Storytelling</h5>
+                                <p class="text-gray-700">Learning to create engaging digital stories using multimedia tools, combining text, images, and audio.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Team Project Work</h5>
+                                <p class="text-gray-700">Continued work on team projects with a focus on incorporating web design and storytelling elements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 5 -->
+            <div class="glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="50">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Day 5: Project Completion & Showcase</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Morning Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-check-double text-techBlue text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Morning</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Project Finalization</h5>
+                                <p class="text-gray-700">Teams complete their projects, adding final touches and preparing for presentation.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Presentation Skills</h5>
+                                <p class="text-gray-700">Workshop on effective presentation techniques and public speaking, with practice sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afternoon Activities -->
+                    <div class="activity-card glass rounded-2xl p-6 h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-trophy text-energyOrange text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">Afternoon</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Project Showcase</h5>
+                                <p class="text-gray-700">Students present their team projects to the group, demonstrating what they've learned and created.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-lg text-gray-800">Celebration & Certificates</h5>
+                                <p class="text-gray-700">Closing ceremony with certificate presentation, reflection activities, and celebration of achievements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="row mt-5">
-                <!-- Monday -->
-                <div class="col-lg-6 d-flex">
-                    <div class="day-card w-100">
-                        <h3 class="day-title">Monday</h3>
-                        <div>
-                            <h5 class="session-title">AM: Computer Fundamentals</h5>
-                            <ul>
-                                <li>Understand hardware, software, files, and applications.</li>
-                                <li>Learn about the internet, email, websites, and apps.</li>
-                                <li>Hands-on: Install apps and manage files.</li>
-                            </ul>
-                        </div>
-                        <div class="mt-4">
-                            <h5 class="session-title">PM: Digital Skills</h5>
-                            <ul>
-                                <li>Organize with Email, schedule with Calendar, and manage files with Google Drive.</li>
-                                <li>Hands-on practice with each tool.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tuesday -->
-                <div class="col-lg-6 d-flex">
-                    <div class="day-card w-100">
-                        <h3 class="day-title">Tuesday</h3>
-                        <div>
-                            <h5 class="session-title">AM: AI Exploration</h5>
-                            <ul>
-                                <li>Explore ChatGPT for ideas and Claude for summarizing.</li>
-                                <li>Hands-on: Build your own private math tutor with AI.</li>
-                            </ul>
-                        </div>
-                        <div class="mt-4">
-                            <h5 class="session-title">PM: Build Your First AI App</h5>
-                            <ul>
-                                <li>Get an introduction to the PartyRock platform.</li>
-                                <li>Hands-on: Build a simple but functional AI app.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Wednesday -->
-                <div class="col-lg-6 d-flex">
-                    <div class="day-card w-100">
-                        <h3 class="day-title">Wednesday</h3>
-                        <div>
-                            <h5 class="session-title">AM: Collaboration Tools</h5>
-                            <ul>
-                                <li>Learn to use Miro for collaborative projects.</li>
-                                <li>Understand how to manage tasks with Jira.</li>
-                            </ul>
-                        </div>
-                        <div class="mt-4">
-                            <h5 class="session-title">PM: Host a Meeting</h5>
-                            <ul>
-                                <li>Learn the essentials of hosting a Zoom meeting.</li>
-                                <li>Understand how to host a Google Meeting.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Thursday -->
-                <div class="col-lg-6 d-flex">
-                    <div class="day-card w-100">
-                        <h3 class="day-title">Thursday</h3>
-                        <div>
-                            <h5 class="session-title">AM: Online Marketplaces</h5>
-                            <ul>
-                                <li>Learn how to safely buy and sell on Gumtree.</li>
-                                <li>Explore buying and selling on Facebook Marketplace.</li>
-                            </ul>
-                        </div>
-                        <div class="mt-4">
-                            <h5 class="session-title">PM: Build Your Website</h5>
-                            <ul>
-                                <li>Get a hands-on introduction to web development and build a personal website.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Friday -->
-                <div class="col-lg-12 d-flex">
-                    <div class="day-card w-100">
-                        <h3 class="day-title">Friday</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5 class="session-title">AM: Build Your Own Store</h5>
-                                <ul>
-                                    <li>Learn the basics of e-commerce and create your own online store.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h5 class="session-title">PM: Build Your YouTube Channel</h5>
-                                <ul>
-                                    <li>From content creation to publishing, learn the steps to launch a YouTube channel.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Registration Form -->
+        <section class="glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="250" id="register">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Register Now</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Secure your child's spot in our Winter Holiday Program. Early bird discount of 15% available until June 15, 2023.
+            </p>
+            <div class="rounded-xl overflow-hidden">
+                <div data-tf-widget="Ow1jbKJM" data-tf-opacity="100" data-tf-iframe-props="title=Winter Program Registration" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
+                <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="footer mt-auto py-3 bg-dark text-white">
-        <div class="container text-center">
-            <a href="about.html" class="text-white me-3">About Us</a>
-            <a href="contact.html" class="text-white me-3">Contact Us</a>
-            <a href="our-approach.html" class="text-white">Our Approach</a>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10 mb-2">
+                    <p class="text-sm text-gray-400">Empowering the next generation with balanced skills</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="about.html" class="text-white hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-white hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="spring-holiday-program.html" class="text-white hover:text-techBlue transition-colors">Spring Program</a>
+                    <a href="winter-holiday-program.html" class="text-white hover:text-techBlue transition-colors">Winter Program</a>
+                    <a href="contact.html" class="text-white hover:text-techBlue transition-colors">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>&copy; 2023 AI Youth Innovators. All rights reserved. | @Candy Solutions</p>
+            </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileProgramsToggle = document.getElementById('mobile-programs-toggle');
+        const mobileProgramsMenu = document.getElementById('mobile-programs-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileProgramsToggle.addEventListener('click', () => {
+            mobileProgramsMenu.classList.toggle('hidden');
+        });
+        
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out',
+                once: true,
+                offset: 50
+            });
+        });
+    </script>
 </body>
 </html>

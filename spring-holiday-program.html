@@ -3,204 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holiday Program - AI Youth Innovators</title>
+    <title>Spring Holiday Program - AI Youth Innovators</title>
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- TailwindCSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Base Styles -->
     <style>
-        .glass-card {
-            background: rgba(255,255,255,0.35);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px 0 rgba(139, 69, 19, 0.10);
-            backdrop-filter: blur(12px) saturate(160%);
-            -webkit-backdrop-filter: blur(12px) saturate(160%);
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 2rem;
+        :root {
+            --color-primary: #2563EB; /* 科技蓝 */
+            --color-secondary: #F97316; /* 活力橙 */
+            --color-tertiary: #10B981; /* 自然绿 */
+            --color-text: #1F2937;
+            --color-background: #F9FAFB;
         }
-        .content-section {
-            margin-bottom: 2rem;
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-        h3 { color: #8B4513; }
-        strong { color: #D2691E; }
-        ul { list-style-type: none; padding-left: 0; }
-        li { background: rgba(255,255,255,0.3); margin: 5px 0; padding: 10px; border-radius: 5px; }
-        .btn-primary {
-            background-color: #D2691E;
-            border-color: #D2691E;
+        
+        main {
+            flex: 1;
         }
-        .btn-primary:hover {
-            background-color: #8B4513;
-            border-color: #8B4513;
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Card Hover Effect */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Image Hover Effect */
+        .hover-zoom {
+            overflow: hidden;
+        }
+        
+        .hover-zoom img {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        
+        /* Activity Card */
+        .activity-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .activity-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .activity-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .activity-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tag-tech {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: #2563EB;
+        }
+        
+        .tag-outdoor {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+        
+        .tag-teamwork {
+            background-color: rgba(249, 115, 22, 0.1);
+            color: #F97316;
         }
     </style>
 </head>
 <body>
-
-    <header class="glass-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" style="height: 40px;">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 glass">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
+                    
+                    <!-- Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center font-medium text-blue-600 transition-colors">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 glass rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
+                            <a href="spring-holiday-program.html" class="block px-4 py-2 text-blue-600 hover:text-blue-800 transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+                </div>
+                
+                <!-- Mobile Navigation Button -->
+                <button class="lg:hidden text-gray-800 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="our-approach.html">Our Approach</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Programs
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="spring-holiday-program.html">Spring Holiday Program</a></li>
-                                <li><a class="dropdown-item" href="winter-holiday-program.html">Winter Holiday Program</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    </ul>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div class="lg:hidden hidden absolute top-full left-0 w-full glass py-4 px-4" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div class="relative">
+                        <button class="flex items-center font-medium text-blue-600 transition-colors w-full justify-between" id="mobile-dropdown-button">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="mt-2 pl-4 border-l-2 border-blue-300 space-y-2" id="mobile-dropdown">
+                            <a href="spring-holiday-program.html" class="block py-1 text-blue-600 hover:text-blue-800 transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container py-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="glass-card" id="content-area">
-                    <div id="overview" class="content-section">
-                        <h2>Holiday Program Overview</h2>
-                        <p><strong>Target Audience:</strong> Kids and teenagers (7-15 years old)</p>
-                        <p><strong>Vision:</strong> To empower the next generation with a balanced skillset for the future. We aim to foster healthier habits, reduce screen time, and cultivate essential life skills, while also equipping them with the knowledge to understand and leverage AI. Our goal is to create well-rounded individuals who are masters of technology, not slaves to it.</p>
-                        <ul>
-                            <p><strong>Holistic Approach:</strong> We are not just a coding camp or an outdoor camp. We offer a balanced program for holistic development.</p>
-                            <p><strong>Experienced Instructors:</strong> A unique team of a certified trainer, a Scout leader, and a youth leader.</p>
-                            <p><strong>Focus on Life Skills:</strong> We teach skills that will be valuable for a lifetime, not just for a career in tech.</p>
-                            <p><strong>AI for Good:</strong> We teach AI with a focus on ethical considerations and using AI to solve real-world problems.</p>
-                        </ul>
-                        <p><strong>Sessions:</strong></p>
-                        <ul>
-                            <li><strong>Week 1:</strong> 29/09/2025 ~ 03/10/2025</li>
-                            <li><strong>Week 2:</strong> 06/10/2025 ~ 10/10/2025</li>
-                        </ul>
-
-
-                        <h3>Instructions for Parents</h3>
-                        <ul>
-                            <li>Drop off before 8:00 AM or after 9:00 AM. Pick up at 5:00 PM.</li>
-                            <li>Please bring an Opal card if dropping off before 8:00 AM.</li>
-                            <li>Detailed drop-off and pick-up instructions will be provided after registration.</li>
-                        </ul>
-                        <!-- <a href="https://buy.stripe.com/cNi8wQ2EHbee6052SK1Nu02" class="btn btn-primary btn-lg mt-3" target="_blank">Register</a> -->
-                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-
-                        <stripe-buy-button
-                        buy-button-id="buy_btn_1RqaGlL5d1aQlvLBxabWi6T4"
-                        publishable-key="pk_live_51ORWMCL5d1aQlvLB8XAMkgxiu8xaKWvT3QKMRcXBJ4r5WCmKitgoNWZmR6zGpwyA4bImcl7Cr46RpKJwuaYJ3o0z00lIjaVZUB"
-                        >
-                        </stripe-buy-button>
-                    </div>
-                    <hr>
-                    <!-- Monday Content -->
-                    <div id="mon-am" class="content-section">
-                        <h3>Monday AM: Computer Fundamentals</h3>
-                        <ul>
-                            <li>Understand the basics of computer operation.</li>
-                            <li><strong>Introduction:</strong> Hardware components, software, operating systems, and applications (Email, websites, Apps).</li>
-                            <li><strong>Hands-on:</strong> Install applications and use Google Maps to navigate.</li>
-                        </ul>
-                    </div>
-                    <div id="mon-pm" class="content-section">
-                        <h3>Monday PM: Outdoor Activities</h3>
-                        <ul>
-                            <li>Warm-up activities</li>
-                            <li>Outdoor safety instruction</li>
-                            <li>First aid instruction</li>
-                            <li>Funny soccer</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <!-- Tuesday Content -->
-                    <div id="tue-am" class="content-section">
-                        <h3>Tuesday AM: Digital Skills</h3>
-                        <ul>
-                            <li>Develop essential digital skills for organization and productivity.</li>
-                            <li><strong>Breakdown:</strong> Compose and organize emails, schedule events in Calendar, and manage files in Google Drive.</li>
-                            <li><strong>Hands-on:</strong> Practical exercises using the tools.</li>
-                        </ul>
-                    </div>
-                    <div id="tue-pm" class="content-section">
-                        <h3>Tuesday PM: Outdoor Skills</h3>
-                        <ul>
-                            <li>Warm-up activities</li>
-                            <li>Learn essential scouting knots</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <!-- Wednesday Content -->
-                    <div id="wed-am" class="content-section">
-                        <h3>Wednesday AM: AI Exploration</h3>
-                        <ul>
-                            <li>Explore AI tools for productivity and learning.</li>
-                            <li><strong>Introduction:</strong> Use ChatGPT for generating ideas and Claude for summarizing information.</li>
-                            <li><strong>Hands-on:</strong> Create your own private math tutor using AI.</li>
-                        </ul>
-                    </div>
-                    <div id="wed-pm" class="content-section">
-                        <h3>Wednesday PM: Camping Skills</h3>
-                        <ul>
-                            <li>Warm-up activities</li>
-                            <li>Learn how to properly set up a tent.</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <!-- Thursday Content -->
-                    <div id="thu-am" class="content-section">
-                        <h3>Thursday AM: AI App Building</h3>
-                        <ul>
-                            <li>Build your first AI application with PartyRock.</li>
-                            <li><strong>Introduction:</strong> Learn the basics of the platform.</li>
-                            <li><strong>Hands-on:</strong> Create a simple, functional AI app.</li>
-                        </ul>
-                    </div>
-                    <div id="thu-pm" class="content-section">
-                        <h3>Thursday PM: Shelter Building</h3>
-                        <ul>
-                            <li>Warm-up activities</li>
-                            <li>Learn how to set up a tarp for shelter.</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <!-- Friday Content -->
-                    <div id="fri-am" class="content-section">
-                        <h3>Friday AM: Collaboration Tools</h3>
-                        <ul>
-                            <li>Use Miro to collaborate on projects.</li>
-                            <li>Use Jira to manage your tasks.</li>
-                        </ul>
-                    </div>
-                    <div id="fri-pm" class="content-section">
-                        <h3>Friday PM: Nature Exploration</h3>
-                        <ul>
-                            <li>Warm-up activities</li>
-                            <li>Go for a relaxing bush walk.</li>
-                        </ul>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="py-12 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" data-aos="fade-up">春季假期项目</h1>
+                <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">为期一周的全面发展项目，结合AI技术学习和户外活动</p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a href="contact.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg">
+                        立即注册
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Overview -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="glass p-8 rounded-xl" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold mb-6 text-center">
+                        <span class="gradient-text">项目概述</span>
+                    </h2>
+                    <div class="max-w-4xl mx-auto">
+                        <p class="text-lg mb-6">
+                            我们的春季假期项目为7-15岁的儿童和青少年提供了一个平衡的学习体验。每天上午，学生们将学习计算机和AI技能；下午，他们将参与户外活动，学习实用的生活技能。
+                        </p>
+                        <p class="text-lg mb-6">
+                            这种平衡的方法确保孩子们不仅能够掌握未来所需的技术技能，还能够发展社交能力、团队合作和实用的生活技能。
+                        </p>
+                        <div class="flex flex-col md:flex-row justify-center gap-8 mt-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt text-blue-600 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-bold">日期</h3>
+                                    <p>29/09/2025 ~ 03/10/2025</p>
+                                    <p>06/10/2025 ~ 10/10/2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-blue-600 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-bold">时间</h3>
+                                    <p>上午 9:00 - 下午 4:00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-600 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-bold">地点</h3>
+                                    <p>悉尼北区</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <!-- Parent Information -->
+        <section class="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">
+                    <span class="border-b-4 border-orange-500 pb-2">家长须知</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Info Card 1 -->
+                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-utensils text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">午餐和零食</h3>
+                        <p class="text-gray-700">
+                            请为您的孩子准备午餐、零食和水瓶。我们将提供下午茶点。
+                        </p>
+                    </div>
+                    
+                    <!-- Info Card 2 -->
+                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-orange-500 mb-4">
+                            <i class="fas fa-tshirt text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">着装要求</h3>
+                        <p class="text-gray-700">
+                            请穿着舒适的衣物和运动鞋。建议带一件轻便外套，以防天气变化。
+                        </p>
+                    </div>
+                    
+                    <!-- Info Card 3 -->
+                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-green-600 mb-4">
+                            <i class="fas fa-first-aid text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">健康和安全</h3>
+                        <p class="text-gray-700">
+                            请在注册表上注明任何过敏或健康问题。所有活动都有经验丰富的导师监督。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Daily Activities -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">
+                    <span class="gradient-text">每日活动安排</span>
+                </h2>
+                
+                <!-- Monday -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8" data-aos="fade-up">
+                        <span class="bg-blue-600 text-white py-2 px-4 rounded-full">周一</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Morning Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/students-labtop.jpeg" alt="计算机基础" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-tech">上午</span>
+                                    <span class="activity-tag tag-tech">技术</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">计算机基础</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习计算机的基本组成部分和操作系统。了解如何安全地使用互联网，包括密码安全和在线隐私。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-blue-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>计算机硬件和软件介绍</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>互联网安全基础</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本文件管理</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Afternoon Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/warmup.jpeg" alt="户外活动" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-outdoor">下午</span>
+                                    <span class="activity-tag tag-outdoor">户外</span>
+                                    <span class="activity-tag tag-teamwork">团队合作</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">户外活动</h4>
+                                <p class="text-gray-700 mb-4">
+                                    参与各种户外团队建设活动，学习基本的户外安全知识和方向感。通过有趣的游戏培养团队合作精神。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-green-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>团队建设游戏</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本方向感训练</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>户外安全知识</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tuesday -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8" data-aos="fade-up">
+                        <span class="bg-blue-600 text-white py-2 px-4 rounded-full">周二</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Morning Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/students-labtop.jpeg" alt="数字技能" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-tech">上午</span>
+                                    <span class="activity-tag tag-tech">技术</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">数字技能</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习基本的数字技能，包括文档处理、电子表格和演示文稿。了解如何有效地进行在线研究和信息评估。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-blue-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>文档和演示文稿创建</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本电子表格技能</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>有效的在线研究方法</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Afternoon Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/knots.jpg" alt="绳结技能" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-outdoor">下午</span>
+                                    <span class="activity-tag tag-outdoor">户外</span>
+                                    <span class="activity-tag tag-teamwork">实用技能</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">绳结技能</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习各种实用的绳结技能，了解它们在不同情况下的应用。通过有趣的挑战和团队活动练习这些技能。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-green-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本绳结技术</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>绳结应用场景</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>团队绳结挑战</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wednesday -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8" data-aos="fade-up">
+                        <span class="bg-blue-600 text-white py-2 px-4 rounded-full">周三</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Morning Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/students-labtop.jpeg" alt="AI探索" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-tech">上午</span>
+                                    <span class="activity-tag tag-tech">AI</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">AI探索</h4>
+                                <p class="text-gray-700 mb-4">
+                                    了解人工智能的基本概念和应用。探索AI如何影响我们的日常生活，以及它在不同领域的应用。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-blue-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>AI基础概念介绍</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>AI在日常生活中的应用</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>AI伦理和安全讨论</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Afternoon Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/tent.jpeg" alt="露营技能" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-outdoor">下午</span>
+                                    <span class="activity-tag tag-outdoor">户外</span>
+                                    <span class="activity-tag tag-teamwork">实用技能</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">露营技能</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习基本的露营技能，包括搭建帐篷、选择营地和户外安全。通过团队合作完成各种露营相关的挑战。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-green-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>帐篷搭建技巧</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>营地选择要点</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>团队露营挑战</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thursday -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8" data-aos="fade-up">
+                        <span class="bg-blue-600 text-white py-2 px-4 rounded-full">周四</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Morning Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/students-labtop.jpeg" alt="AI应用构建" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-tech">上午</span>
+                                    <span class="activity-tag tag-tech">AI</span>
+                                    <span class="activity-tag tag-tech">创新</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">AI应用构建</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习如何使用AI工具创建简单的应用程序。探索不同的AI平台和工具，了解如何将它们应用于解决实际问题。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-blue-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>AI工具介绍</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>简单AI应用创建</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>问题解决与创新思维</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Afternoon Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/bushwalk.jpg" alt="丛林探险" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-outdoor">下午</span>
+                                    <span class="activity-tag tag-outdoor">户外</span>
+                                    <span class="activity-tag tag-teamwork">探险</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">丛林探险</h4>
+                                <p class="text-gray-700 mb-4">
+                                    参与一次短途丛林探险，学习基本的导航技能和自然观察。通过团队合作完成各种探险挑战和任务。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-green-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本导航技能</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>自然观察与识别</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>团队探险挑战</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Friday -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8" data-aos="fade-up">
+                        <span class="bg-blue-600 text-white py-2 px-4 rounded-full">周五</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Morning Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/students-labtop.jpeg" alt="协作工具" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-tech">上午</span>
+                                    <span class="activity-tag tag-tech">协作</span>
+                                    <span class="activity-tag tag-teamwork">团队合作</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">协作工具</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习使用各种数字协作工具，了解如何在团队中有效地沟通和协作。通过小组项目练习这些技能。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-blue-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>数字协作工具介绍</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>有效的在线沟通</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>小组协作项目</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Afternoon Activity -->
+                        <div class="glass activity-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                            <div class="activity-card-image hover-zoom rounded-t-xl">
+                                <img src="images/firstaid.jpg" alt="急救技能" class="rounded-t-xl">
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <span class="activity-tag tag-outdoor">下午</span>
+                                    <span class="activity-tag tag-outdoor">安全</span>
+                                    <span class="activity-tag tag-teamwork">实用技能</span>
+                                </div>
+                                <h4 class="text-xl font-bold mb-3">急救技能</h4>
+                                <p class="text-gray-700 mb-4">
+                                    学习基本的急救技能和安全知识，包括如何处理常见的伤害和紧急情况。通过实践练习和模拟场景巩固这些技能。
+                                </p>
+                                <div class="mt-auto">
+                                    <h5 class="font-semibold text-green-600 mb-2">活动亮点：</h5>
+                                    <ul class="space-y-1">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>基本急救技能</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>紧急情况处理</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                            <span>急救模拟场景</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Registration CTA -->
+        <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">准备好参加我们的春季假期项目了吗？</h2>
+                <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">立即注册，为您的孩子提供一个平衡的学习体验，结合技术技能和户外活动。</p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a href="contact.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg">
+                        立即注册
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="footer mt-auto py-3 bg-dark text-white">
-        <div class="container text-center">
-            <a href="about.html" class="text-white me-3">About Us</a>
-            <a href="contact.html" class="text-white me-3">Contact Us</a>
-            <a href="our-approach.html" class="text-white">Our Approach</a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10 mb-2">
+                    <p class="text-gray-400">Empowering the next generation with balanced skills</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact Us</a>
+                    <a href="our-approach.html" class="text-gray-300 hover:text-white transition-colors">Our Approach</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 AI Youth Innovators. All rights reserved.</p>
+                <p class="mt-1">Created by @Candy Solutions</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Mobile Dropdown Toggle
+        document.getElementById('mobile-dropdown-button').addEventListener('click', function() {
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            mobileDropdown.classList.toggle('hidden');
+        });
+        
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out',
+                once: true,
+                offset: 50
+            });
+        });
+    </script>
 </body>
 </html>

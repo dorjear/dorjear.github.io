@@ -5,85 +5,690 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Youth Innovators</title>
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- TailwindCSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Base Styles -->
+    <style>
+        :root {
+            --color-primary: #2563EB; /* 科技蓝 */
+            --color-secondary: #F97316; /* 活力橙 */
+            --color-tertiary: #10B981; /* 自然绿 */
+            --color-text: #1F2937;
+            --color-background: #F9FAFB;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        main {
+            flex: 1;
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Card Hover Effect */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Image Hover Effect */
+        .hover-zoom {
+            overflow: hidden;
+        }
+        
+        .hover-zoom img {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        
+        /* Hero Carousel */
+        .carousel-item {
+            height: 70vh;
+            min-height: 400px;
+        }
+        
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 1.5rem 2rem;
+            color: #1F2937;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-
-    <header class="glass-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" style="height: 40px;">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 glass">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
+                    
+                    <!-- Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center font-medium text-gray-800 hover:text-blue-600 transition-colors">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 glass rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
+                            <a href="spring-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+                </div>
+                
+                <!-- Mobile Navigation Button -->
+                <button class="lg:hidden text-gray-800 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="our-approach.html">Our Approach</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Programs
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="spring-holiday-program.html">Spring Holiday Program</a></li>
-                                <li><a class="dropdown-item" href="winter-holiday-program.html">Winter Holiday Program</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="cn/index.html">中文</a></li>
-                    </ul>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div class="lg:hidden hidden absolute top-full left-0 w-full glass py-4 px-4" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div class="relative">
+                        <button class="flex items-center font-medium text-gray-800 hover:text-blue-600 transition-colors w-full justify-between" id="mobile-dropdown-button">
+                            Programs
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="hidden mt-2 pl-4 border-l-2 border-gray-300 space-y-2" id="mobile-dropdown">
+                            <a href="spring-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Spring Holiday Program</a>
+                            <a href="winter-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        </div>
+                    </div>
+                    
+                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
+                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
+                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
                 </div>
             </div>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <div class="container main-container">
-        <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="images/banner1.jpg" class="d-block w-100" alt="Banner 1">
-                    <div class="carousel-caption d-none d-md-block glass-caption">
-                        <h5>Leadership and Teamwork</h5>
+        <!-- Hero Carousel -->
+        <section class="relative overflow-hidden">
+            <div id="heroCarousel" class="relative">
+                <!-- Carousel Items -->
+                <div class="carousel-items">
+                    <!-- Item 1 -->
+                    <div class="carousel-item active">
+                        <img src="images/banner1.jpg" alt="Leadership and Teamwork" class="w-full">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="carousel-caption text-center">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-2">Leadership and Teamwork</h2>
+                                <p class="text-lg md:text-xl">Building future leaders through collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="carousel-item hidden">
+                        <img src="images/banner2.png" alt="AI & Computer Skills" class="w-full">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="carousel-caption text-center">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-2">AI & Computer Skills</h2>
+                                <p class="text-lg md:text-xl">Mastering technology for the future</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="carousel-item hidden">
+                        <img src="images/banner3.jpg" alt="Outdoor & Life Skills" class="w-full">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="carousel-caption text-center">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-2">Outdoor & Life Skills</h2>
+                                <p class="text-lg md:text-xl">Developing practical skills for life</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="images/banner2.png" class="d-block w-100" alt="Banner 2">
-                    <div class="carousel-caption d-none d-md-block glass-caption">
-                        <h5>AI & Computer Skills</h5>
-                    </div>
+                
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 text-gray-800 focus:outline-none transition-colors" id="prevButton">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 text-gray-800 focus:outline-none transition-colors" id="nextButton">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-white/70 focus:outline-none indicator active" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/40 focus:outline-none indicator" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/40 focus:outline-none indicator" data-index="2"></button>
                 </div>
-                <div class="carousel-item">
-                    <img src="images/banner3.jpg" class="d-block w-100" alt="Banner 3">
-                    <div class="carousel-caption d-none d-md-block glass-caption">
-                        <h5>Outdoor & Life Skills</h5>
+            </div>
+        </section>
+        
+        <!-- Core Value Proposition -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-on-scroll">
+                    <span class="gradient-text">培养未来的创新者</span>
+                </h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto animate-on-scroll delay-200">
+                    平衡技术能力与生活技能，成为技术的主人而非奴隶
+                </p>
+            </div>
+        </section>
+        
+        <!-- Program Highlights -->
+        <section class="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                    <span class="border-b-4 border-orange-500 pb-2">项目亮点</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-100">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-balance-scale text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">全面发展</h3>
+                        <p class="text-gray-700">
+                            我们不仅仅是编程营或户外营。我们提供平衡的课程，促进全面发展。
+                        </p>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-200">
+                        <div class="text-orange-500 mb-4">
+                            <i class="fas fa-chalkboard-teacher text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">经验丰富的导师</h3>
+                        <p class="text-gray-700">
+                            由认证培训师、童军领袖和青年领袖组成的独特团队。
+                        </p>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-300">
+                        <div class="text-green-600 mb-4">
+                            <i class="fas fa-toolbox text-4xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">生活技能</h3>
+                        <p class="text-gray-700">
+                            我们教授终身有价值的技能，而不仅仅是技术职业所需的技能。
+                        </p>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        </div>
+        </section>
+        
+        <!-- Target Audience -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <!-- Image -->
+                    <div class="w-full md:w-1/2 hover-zoom rounded-xl overflow-hidden animate-on-scroll">
+                        <img src="images/students-labtop.jpeg" alt="Students learning" class="w-full h-auto rounded-xl">
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="w-full md:w-1/2 animate-on-scroll delay-200">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            <span class="gradient-text">适合7-15岁的儿童和青少年</span>
+                        </h2>
+                        <p class="text-lg mb-6 text-gray-700">
+                            我们的项目专为希望在技术和户外技能方面得到平衡发展的年轻人设计。
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <span>对技术和户外活动都感兴趣的儿童</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <span>希望减少屏幕时间的家长</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <span>想要学习实用生活技能的青少年</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <span>对AI和未来技术好奇的年轻人</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Timeline -->
+        <section class="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                    <span class="border-b-4 border-orange-500 pb-2">项目时间表</span>
+                </h2>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Timeline Item 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 mb-12 animate-on-scroll">
+                        <div class="md:w-1/3">
+                            <div class="glass p-4 rounded-xl text-center">
+                                <h3 class="text-2xl font-bold text-blue-600">第一周</h3>
+                                <p class="text-lg font-medium">29/09/2025 ~ 03/10/2025</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 glass p-6 rounded-xl hover-lift">
+                            <h4 class="text-xl font-bold mb-2">春季假期项目</h4>
+                            <p class="text-gray-700">
+                                为期一周的全面发展项目，结合AI技术学习和户外活动。每天上午进行技术学习，下午参与户外活动。
+                            </p>
+                            <a href="spring-holiday-program.html" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">
+                                查看详情 <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 mb-12 animate-on-scroll delay-200">
+                        <div class="md:w-1/3">
+                            <div class="glass p-4 rounded-xl text-center">
+                                <h3 class="text-2xl font-bold text-blue-600">第二周</h3>
+                                <p class="text-lg font-medium">06/10/2025 ~ 10/10/2025</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 glass p-6 rounded-xl hover-lift">
+                            <h4 class="text-xl font-bold mb-2">春季假期项目</h4>
+                            <p class="text-gray-700">
+                                第二周的课程内容与第一周相同，为无法参加第一周的学生提供机会。每天上午进行技术学习，下午参与户外活动。
+                            </p>
+                            <a href="spring-holiday-program.html" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">
+                                查看详情 <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 animate-on-scroll delay-300">
+                        <div class="md:w-1/3">
+                            <div class="glass p-4 rounded-xl text-center">
+                                <h3 class="text-2xl font-bold text-blue-600">冬季</h3>
+                                <p class="text-lg font-medium">待定</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 glass p-6 rounded-xl hover-lift">
+                            <h4 class="text-xl font-bold mb-2">冬季假期项目</h4>
+                            <p class="text-gray-700">
+                                敬请期待我们的冬季假期项目详情。将提供类似的平衡发展课程，结合室内技术学习和户外活动。
+                            </p>
+                            <a href="winter-holiday-program.html" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">
+                                了解更多 <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 animate-on-scroll">准备好加入我们了吗？</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8 animate-on-scroll delay-200">注册我们的假期项目，开始平衡发展之旅。</p>
+                <div class="animate-on-scroll delay-300">
+                    <a href="spring-holiday-program.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg mr-4 mb-4 md:mb-0">
+                        立即注册
+                    </a>
+                    <a href="our-approach.html" class="inline-block bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full border-2 border-white transition-colors text-lg">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                    <span class="border-b-4 border-orange-500 pb-2">家长和学生的评价</span>
+                </h2>
+                
+                <div class="max-w-4xl mx-auto" id="testimonialCarousel">
+                    <!-- Testimonial Items -->
+                    <div class="testimonial-items">
+                        <!-- Item 1 -->
+                        <div class="testimonial-item active glass p-8 rounded-xl animate-on-scroll">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-orange-500 mb-4">
+                                    <i class="fas fa-quote-left text-4xl"></i>
+                                </div>
+                                <p class="text-lg mb-6 text-gray-700">
+                                    我的孩子在项目中学到了很多实用技能，同时也减少了屏幕时间。非常推荐！
+                                </p>
+                                <div class="flex items-center justify-center">
+                                    <div class="mr-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-user text-blue-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold">张先生</h4>
+                                        <p class="text-sm text-gray-600">家长</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="testimonial-item hidden glass p-8 rounded-xl">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-orange-500 mb-4">
+                                    <i class="fas fa-quote-left text-4xl"></i>
+                                </div>
+                                <p class="text-lg mb-6 text-gray-700">
+                                    导师们非常专业，活动安排得很好。我的孩子每天都很期待参加。
+                                </p>
+                                <div class="flex items-center justify-center">
+                                    <div class="mr-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-user text-blue-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold">李小姐</h4>
+                                        <p class="text-sm text-gray-600">家长</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="testimonial-item hidden glass p-8 rounded-xl">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-orange-500 mb-4">
+                                    <i class="fas fa-quote-left text-4xl"></i>
+                                </div>
+                                <p class="text-lg mb-6 text-gray-700">
+                                    我学会了搭建帐篷和使用AI工具。这是我参加过的最有趣的假期项目！
+                                </p>
+                                <div class="flex items-center justify-center">
+                                    <div class="mr-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-user text-blue-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold">王同学</h4>
+                                        <p class="text-sm text-gray-600">12岁</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial Controls -->
+                    <div class="flex justify-center mt-8 space-x-2">
+                        <button class="w-3 h-3 rounded-full bg-blue-300 focus:outline-none testimonial-indicator active" data-index="0"></button>
+                        <button class="w-3 h-3 rounded-full bg-blue-200 focus:outline-none testimonial-indicator" data-index="1"></button>
+                        <button class="w-3 h-3 rounded-full bg-blue-200 focus:outline-none testimonial-indicator" data-index="2"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="footer mt-auto py-3 bg-dark text-white">
-        <div class="container text-center">
-            <a href="about.html" class="text-white me-3">About Us</a>
-            <a href="contact.html" class="text-white me-3">Contact Us</a>
-            <a href="our-approach.html" class="text-white">Our Approach</a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10 mb-2">
+                    <p class="text-gray-400">Empowering the next generation with balanced skills</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact Us</a>
+                    <a href="our-approach.html" class="text-gray-300 hover:text-white transition-colors">Our Approach</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 AI Youth Innovators. All rights reserved.</p>
+                <p class="mt-1">Created by @Candy Solutions</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Mobile Dropdown Toggle
+        document.getElementById('mobile-dropdown-button').addEventListener('click', function() {
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            mobileDropdown.classList.toggle('hidden');
+        });
+        
+        // Hero Carousel
+        const heroCarousel = {
+            items: document.querySelectorAll('#heroCarousel .carousel-item'),
+            indicators: document.querySelectorAll('#heroCarousel .indicator'),
+            prevButton: document.getElementById('prevButton'),
+            nextButton: document.getElementById('nextButton'),
+            currentIndex: 0,
+            interval: null,
+            
+            init: function() {
+                this.prevButton.addEventListener('click', () => this.prev());
+                this.nextButton.addEventListener('click', () => this.next());
+                
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goTo(index));
+                });
+                
+                this.startAutoplay();
+            },
+            
+            goTo: function(index) {
+                // Hide current item
+                this.items[this.currentIndex].classList.add('hidden');
+                this.items[this.currentIndex].classList.remove('active');
+                this.indicators[this.currentIndex].classList.remove('active');
+                this.indicators[this.currentIndex].classList.add('bg-white/40');
+                this.indicators[this.currentIndex].classList.remove('bg-white/70');
+                
+                // Show new item
+                this.currentIndex = index;
+                this.items[this.currentIndex].classList.remove('hidden');
+                this.items[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].classList.remove('bg-white/40');
+                this.indicators[this.currentIndex].classList.add('bg-white/70');
+            },
+            
+            next: function() {
+                const nextIndex = (this.currentIndex + 1) % this.items.length;
+                this.goTo(nextIndex);
+            },
+            
+            prev: function() {
+                const prevIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+                this.goTo(prevIndex);
+            },
+            
+            startAutoplay: function() {
+                this.interval = setInterval(() => this.next(), 5000);
+            },
+            
+            stopAutoplay: function() {
+                clearInterval(this.interval);
+            }
+        };
+        
+        // Testimonial Carousel
+        const testimonialCarousel = {
+            items: document.querySelectorAll('#testimonialCarousel .testimonial-item'),
+            indicators: document.querySelectorAll('#testimonialCarousel .testimonial-indicator'),
+            currentIndex: 0,
+            interval: null,
+            
+            init: function() {
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goTo(index));
+                });
+                
+                this.startAutoplay();
+            },
+            
+            goTo: function(index) {
+                // Hide current item
+                this.items[this.currentIndex].classList.add('hidden');
+                this.items[this.currentIndex].classList.remove('active');
+                this.indicators[this.currentIndex].classList.remove('active');
+                this.indicators[this.currentIndex].classList.add('bg-blue-200');
+                this.indicators[this.currentIndex].classList.remove('bg-blue-300');
+                
+                // Show new item
+                this.currentIndex = index;
+                this.items[this.currentIndex].classList.remove('hidden');
+                this.items[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].classList.add('active');
+                this.indicators[this.currentIndex].classList.remove('bg-blue-200');
+                this.indicators[this.currentIndex].classList.add('bg-blue-300');
+            },
+            
+            next: function() {
+                const nextIndex = (this.currentIndex + 1) % this.items.length;
+                this.goTo(nextIndex);
+            },
+            
+            startAutoplay: function() {
+                this.interval = setInterval(() => this.next(), 6000);
+            },
+            
+            stopAutoplay: function() {
+                clearInterval(this.interval);
+            }
+        };
+        
+        // Initialize Scroll Animations
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize carousels
+            heroCarousel.init();
+            testimonialCarousel.init();
+            
+            // Initialize scroll animations
+            const observer = new IntersectionObserver(animateOnScroll, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '-50px'
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
