@@ -7,312 +7,247 @@
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
     
     <!-- TailwindCSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Base Styles -->
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        techBlue: '#3498db',
+                        energyOrange: '#e67e22',
+                        natureGreen: '#2ecc71',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/css">
+        /* Custom CSS */
         :root {
-            --color-primary: #2563EB; /* 科技蓝 */
-            --color-secondary: #F97316; /* 活力橙 */
-            --color-tertiary: #10B981; /* 自然绿 */
-            --color-text: #1F2937;
-            --color-background: #F9FAFB;
+            --tech-blue: #3498db;
+            --energy-orange: #e67e22;
+            --nature-green: #2ecc71;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--color-text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
         }
         
-        main {
-            flex: 1;
-        }
-        
-        /* Glass Effect */
+        /* Glass effect */
         .glass {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px) saturate(180%);
-            -webkit-backdrop-filter: blur(10px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
         
-        /* Gradient Text */
+        /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Card hover effect */
+        .approach-card {
+            transition: all 0.3s ease;
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Active nav item */
+        .nav-item.active {
+            border-left: 3px solid var(--tech-blue);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        /* Number counter */
+        .number-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: inline-block;
-        }
-        
-        /* Card Hover Effect */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        /* Image Hover Effect */
-        .hover-zoom {
-            overflow: hidden;
-        }
-        
-        .hover-zoom img {
-            transition: transform 0.3s ease;
-        }
-        
-        .hover-zoom:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Animation Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .delay-100 { transition-delay: 0.1s; }
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-300 { transition-delay: 0.3s; }
-        .delay-400 { transition-delay: 0.4s; }
-        .delay-500 { transition-delay: 0.5s; }
-        
-        /* Activity Card */
-        .activity-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .activity-card-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .activity-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .activity-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tag-tech {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: #2563EB;
-        }
-        
-        .tag-outdoor {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #10B981;
-        }
-        
-        .tag-teamwork {
-            background-color: rgba(249, 115, 22, 0.1);
-            color: #F97316;
+            line-height: 1;
         }
     </style>
 </head>
-<body>
-    <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 glass">
+<body class="min-h-screen">
+
+    <!-- Navigation -->
+    <header class="glass fixed w-full z-50">
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
                 <a href="index.html" class="flex items-center">
                     <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
-                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
-                    
-                    <!-- Dropdown -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="flex items-center font-medium text-blue-600 transition-colors">
+                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
                             Programs
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
                         </button>
-                        <div class="absolute left-0 mt-2 w-48 glass rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
-                            <a href="spring-holiday-program.html" class="block px-4 py-2 text-blue-600 hover:text-blue-800 transition-colors">Spring Holiday Program</a>
-                            <a href="winter-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <div class="py-1">
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-techBlue font-semibold">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Winter Holiday Program</a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
-                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
-                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
                 </div>
                 
-                <!-- Mobile Navigation Button -->
-                <button class="lg:hidden text-gray-800 focus:outline-none" id="mobile-menu-button">
-                    <i class="fas fa-bars text-2xl"></i>
+                <!-- Mobile Navigation Toggle -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
             
             <!-- Mobile Navigation Menu -->
-            <div class="lg:hidden hidden absolute top-full left-0 w-full glass py-4 px-4" id="mobile-menu">
-                <div class="flex flex-col space-y-4">
-                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
-                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
-                    
-                    <!-- Mobile Dropdown -->
-                    <div class="relative">
-                        <button class="flex items-center font-medium text-blue-600 transition-colors w-full justify-between" id="mobile-dropdown-button">
-                            Programs
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </button>
-                        <div class="mt-2 pl-4 border-l-2 border-blue-300 space-y-2" id="mobile-dropdown">
-                            <a href="spring-holiday-program.html" class="block py-1 text-blue-600 hover:text-blue-800 transition-colors">Spring Holiday Program</a>
-                            <a href="winter-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
-                        </div>
-                    </div>
-                    
-                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
-                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
-                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="index.html" class="block py-2 text-gray-800">Home</a>
+                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                    <span>Programs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="mobile-programs-menu" class="hidden pl-4">
+                    <a href="spring-holiday-program.html" class="block py-2 text-techBlue font-semibold">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
                 </div>
+                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
+                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="py-12 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" data-aos="fade-up">春季假期项目</h1>
-                <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">为期一周的全面发展项目，结合AI技术学习和户外活动</p>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <a href="contact.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg">
-                        立即注册
-                    </a>
-                </div>
+        <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+
+
+        <!-- Content with Sidebar Navigation -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Navigation (Desktop) -->
+            <div class="hidden lg:block w-64 glass rounded-2xl p-4 h-fit sticky top-24">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Quick Navigation</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#program-overview" class="nav-item block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            Program Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#parent-information" class="nav-item block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            Parent Information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#daily-activities" class="nav-item block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            Daily Activities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#registration" class="nav-item block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            Registration
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </section>
+
+            <!-- Main Content -->
+            <div class="flex-1">
+                <!-- Program Overview Section -->
+                <section id="program-overview" class="glass rounded-2xl p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="text-2xl font-bold mb-4 text-techBlue">Program Overview</h2>
+                    <p class="text-gray-700 mb-4">
+                        Our Spring Holiday Program is designed to ignite curiosity and foster essential skills through a blend of engaging outdoor activities and cutting-edge technology workshops. Participants will embark on a journey of discovery, learning practical outdoor survival skills alongside advanced AI and coding concepts.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        We aim to create a holistic learning experience that encourages critical thinking, problem-solving, and teamwork. Each day is packed with diverse activities, ensuring a dynamic and enriching environment for all. From building AI applications to mastering bushcraft, children will develop a unique skill set that prepares them for both the wilderness and the digital frontier.
+                    </p>
+                    <p class="text-gray-700">
+                        Our experienced instructors are passionate about guiding young minds, providing a safe, supportive, and stimulating atmosphere where every child can thrive. Join us for an unforgettable holiday adventure!
+                    </p>
+                </section>
+
+
         
-        <!-- Program Overview -->
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <div class="glass p-8 rounded-xl" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-6 text-center">
-                        <span class="gradient-text">项目概述</span>
-                    </h2>
-                    <div class="max-w-4xl mx-auto">
-                        <p class="text-lg mb-6">
-                            我们的春季假期项目为7-15岁的儿童和青少年提供了一个平衡的学习体验。每天上午，学生们将学习计算机和AI技能；下午，他们将参与户外活动，学习实用的生活技能。
-                        </p>
-                        <p class="text-lg mb-6">
-                            这种平衡的方法确保孩子们不仅能够掌握未来所需的技术技能，还能够发展社交能力、团队合作和实用的生活技能。
-                        </p>
-                        <div class="flex flex-col md:flex-row justify-center gap-8 mt-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-calendar-alt text-blue-600 text-2xl mr-4"></i>
-                                <div>
-                                    <h3 class="font-bold">日期</h3>
-                                    <p>29/09/2025 ~ 03/10/2025</p>
-                                    <p>06/10/2025 ~ 10/10/2025</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-clock text-blue-600 text-2xl mr-4"></i>
-                                <div>
-                                    <h3 class="font-bold">时间</h3>
-                                    <p>上午 9:00 - 下午 4:00</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-blue-600 text-2xl mr-4"></i>
-                                <div>
-                                    <h3 class="font-bold">地点</h3>
-                                    <p>悉尼北区</p>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Parent Information Section -->
+        <section id="parent-information" class="glass rounded-2xl p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-2xl font-bold mb-4 text-techBlue">家长信息</h2>
+            <p class="text-gray-700 mb-4">
+                我们致力于为您的孩子提供一个安全、有趣和富有教育意义的环境。以下是一些重要的家长信息：
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <!-- Info Card 1 -->
+                <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-calendar-alt text-3xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">日程安排</h3>
+                    <p class="text-gray-700">
+                        项目从上午9:00开始，下午3:00结束。请确保您的孩子准时到达和离开。
+                    </p>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Parent Information -->
-        <section class="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">
-                    <span class="border-b-4 border-orange-500 pb-2">家长须知</span>
-                </h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Info Card 1 -->
-                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-blue-600 mb-4">
-                            <i class="fas fa-utensils text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">午餐和零食</h3>
-                        <p class="text-gray-700">
-                            请为您的孩子准备午餐、零食和水瓶。我们将提供下午茶点。
-                        </p>
+                <!-- Info Card 2 -->
+                <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-orange-600 mb-4">
+                        <i class="fas fa-utensils text-3xl"></i>
                     </div>
-                    
-                    <!-- Info Card 2 -->
-                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="200">
-                        <div class="text-orange-500 mb-4">
-                            <i class="fas fa-tshirt text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">着装要求</h3>
-                        <p class="text-gray-700">
-                            请穿着舒适的衣物和运动鞋。建议带一件轻便外套，以防天气变化。
-                        </p>
+                    <h3 class="text-xl font-bold mb-3">午餐和零食</h3>
+                    <p class="text-gray-700">
+                        请为您的孩子准备好午餐、零食和水瓶。我们将提供充足的饮用水。
+                    </p>
+                </div>
+                
+                <!-- Info Card 3 -->
+                <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-first-aid text-3xl"></i>
                     </div>
-                    
-                    <!-- Info Card 3 -->
-                    <div class="glass p-6 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="300">
-                        <div class="text-green-600 mb-4">
-                            <i class="fas fa-first-aid text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">健康和安全</h3>
-                        <p class="text-gray-700">
-                            请在注册表上注明任何过敏或健康问题。所有活动都有经验丰富的导师监督。
-                        </p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-3">健康和安全</h3>
+                    <p class="text-gray-700">
+                        请在注册表上注明任何过敏或健康问题。所有活动都有经验丰富的导师监督。
+                    </p>
                 </div>
             </div>
         </section>
-        
+
         <!-- Daily Activities -->
-        <section class="py-16">
+        <section id="daily-activities" class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">
                     <span class="gradient-text">每日活动安排</span>
@@ -713,7 +648,7 @@
         </section>
         
         <!-- Registration CTA -->
-        <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <section id="registration" class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">准备好参加我们的春季假期项目了吗？</h2>
                 <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">立即注册，为您的孩子提供一个平衡的学习体验，结合技术技能和户外活动。</p>
@@ -724,6 +659,8 @@
                 </div>
             </div>
         </section>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -749,10 +686,6 @@
         </div>
     </footer>
 
-    <!-- AOS Animation Library -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
     <!-- Custom Scripts -->
     <script>
         // Mobile Menu Toggle
@@ -761,21 +694,30 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Mobile Dropdown Toggle
-        document.getElementById('mobile-dropdown-button').addEventListener('click', function() {
-            const mobileDropdown = document.getElementById('mobile-dropdown');
-            mobileDropdown.classList.toggle('hidden');
+        // Mobile Programs Dropdown Toggle
+        document.getElementById('mobile-programs-toggle').addEventListener('click', function() {
+            const mobileProgramsMenu = document.getElementById('mobile-programs-menu');
+            mobileProgramsMenu.classList.toggle('hidden');
         });
-        
-        // Initialize AOS animation library
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
+
+        // Smooth scroll for sidebar navigation
+        document.querySelectorAll('.nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        AOS.init({
                 duration: 800,
                 easing: 'ease-out',
                 once: true,
                 offset: 50
             });
-        });
     </script>
 </body>
 </html>
