@@ -7,7 +7,26 @@
     <link rel="icon" type="image/png" href="images/ai-youth-ico.png">
     
     <!-- TailwindCSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        techBlue: '#3498db',
+                        energyOrange: '#e67e22',
+                        natureGreen: '#2ecc71',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
     
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -17,55 +36,43 @@
     
     <!-- Base Styles -->
     <style>
+        /* Custom CSS */
         :root {
-            --color-primary: #2563EB; /* 科技蓝 */
-            --color-secondary: #F97316; /* 活力橙 */
-            --color-tertiary: #10B981; /* 自然绿 */
-            --color-text: #1F2937;
-            --color-background: #F9FAFB;
+            --tech-blue: #3498db;
+            --energy-orange: #e67e22;
+            --nature-green: #2ecc71;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--color-text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
         }
         
-        main {
-            flex: 1;
-        }
-        
-        /* Glass Effect */
+        /* Glass effect */
         .glass {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px) saturate(180%);
-            -webkit-backdrop-filter: blur(10px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
         
-        /* Gradient Text */
+        /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            display: inline-block;
         }
         
-        /* Card Hover Effect */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Card hover effect */
+        .team-card {
+            transition: all 0.3s ease;
         }
         
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
         /* Image Hover Effect */
@@ -81,17 +88,7 @@
             transform: scale(1.05);
         }
         
-        /* Animation Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
         
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
         
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
@@ -127,72 +124,68 @@
 </head>
 <body>
     <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 glass">
+    <!-- Navigation -->
+    <header class="glass fixed w-full z-50">
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
                 <a href="index.html" class="flex items-center">
                     <img src="images/ai-youth-logo.png" alt="AI Youth Logo" class="h-10">
                 </a>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
-                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
-                    
-                    <!-- Dropdown -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="flex items-center font-medium text-gray-800 hover:text-blue-600 transition-colors">
+                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
                             Programs
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
                         </button>
-                        <div class="absolute left-0 mt-2 w-48 glass rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
-                            <a href="spring-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Spring Holiday Program</a>
-                            <a href="winter-holiday-program.html" class="block px-4 py-2 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <div class="py-1">
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Winter Holiday Program</a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
-                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
-                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
                 </div>
                 
-                <!-- Mobile Navigation Button -->
-                <button class="lg:hidden text-gray-800 focus:outline-none" id="mobile-menu-button">
-                    <i class="fas fa-bars text-2xl"></i>
+                <!-- Mobile Navigation Toggle -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
             
             <!-- Mobile Navigation Menu -->
-            <div class="lg:hidden hidden absolute top-full left-0 w-full glass py-4 px-4" id="mobile-menu">
-                <div class="flex flex-col space-y-4">
-                    <a href="index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="about.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">About Us</a>
-                    <a href="our-approach.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Our Approach</a>
-                    
-                    <!-- Mobile Dropdown -->
-                    <div class="relative">
-                        <button class="flex items-center font-medium text-gray-800 hover:text-blue-600 transition-colors w-full justify-between" id="mobile-dropdown-button">
-                            Programs
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </button>
-                        <div class="hidden mt-2 pl-4 border-l-2 border-gray-300 space-y-2" id="mobile-dropdown">
-                            <a href="spring-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Spring Holiday Program</a>
-                            <a href="winter-holiday-program.html" class="block py-1 text-gray-800 hover:text-blue-600 transition-colors">Winter Holiday Program</a>
-                        </div>
-                    </div>
-                    
-                    <a href="activities.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Activities</a>
-                    <a href="contact.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">Contact Us</a>
-                    <a href="cn/index.html" class="font-medium text-gray-800 hover:text-blue-600 transition-colors">中文</a>
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="index.html" class="block py-2 text-gray-800">Home</a>
+                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                    <span>Programs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="mobile-programs-menu" class="hidden pl-4">
+                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
                 </div>
+                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
+                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main class="pt-20">
         <!-- Hero Carousel -->
         <section class="relative overflow-hidden">
             <div id="heroCarousel" class="relative">
@@ -252,10 +245,10 @@
         <!-- Core Value Proposition -->
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-on-scroll">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
                     <span class="gradient-text">培养未来的创新者</span>
                 </h1>
-                <p class="text-xl md:text-2xl max-w-3xl mx-auto animate-on-scroll delay-200">
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto delay-200">
                     平衡技术能力与生活技能，成为技术的主人而非奴隶
                 </p>
             </div>
@@ -264,13 +257,13 @@
         <!-- Program Highlights -->
         <section class="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
                     <span class="border-b-4 border-orange-500 pb-2">项目亮点</span>
                 </h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Card 1 -->
-                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-100">
+                    <div class="glass p-6 rounded-xl hover-lift delay-100">
                         <div class="text-blue-600 mb-4">
                             <i class="fas fa-balance-scale text-4xl"></i>
                         </div>
@@ -281,18 +274,18 @@
                     </div>
                     
                     <!-- Card 2 -->
-                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-200">
+                    <div class="glass p-6 rounded-xl hover-lift delay-200">
                         <div class="text-orange-500 mb-4">
                             <i class="fas fa-chalkboard-teacher text-4xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3">经验丰富的导师</h3>
                         <p class="text-gray-700">
-                            由认证培训师、童军领袖和青年领袖组成的独特团队。
+                            由认证培训师、童���领袖和青年领袖组成的独特团队。
                         </p>
                     </div>
                     
                     <!-- Card 3 -->
-                    <div class="glass p-6 rounded-xl hover-lift animate-on-scroll delay-300">
+                    <div class="glass p-6 rounded-xl hover-lift delay-300">
                         <div class="text-green-600 mb-4">
                             <i class="fas fa-toolbox text-4xl"></i>
                         </div>
@@ -310,12 +303,12 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
                     <!-- Image -->
-                    <div class="w-full md:w-1/2 hover-zoom rounded-xl overflow-hidden animate-on-scroll">
+                    <div class="w-full md:w-1/2 hover-zoom rounded-xl overflow-hidden">
                         <img src="images/students-labtop.jpeg" alt="Students learning" class="w-full h-auto rounded-xl">
                     </div>
                     
                     <!-- Content -->
-                    <div class="w-full md:w-1/2 animate-on-scroll delay-200">
+                    <div class="w-full md:w-1/2 delay-200">
                         <h2 class="text-3xl md:text-4xl font-bold mb-6">
                             <span class="gradient-text">适合7-15岁的儿童和青少年</span>
                         </h2>
@@ -348,13 +341,13 @@
         <!-- Program Timeline -->
         <section class="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
                     <span class="border-b-4 border-orange-500 pb-2">项目时间表</span>
                 </h2>
                 
                 <div class="max-w-3xl mx-auto">
                     <!-- Timeline Item 1 -->
-                    <div class="flex flex-col md:flex-row gap-4 mb-12 animate-on-scroll">
+                    <div class="flex flex-col md:flex-row gap-4 mb-12">
                         <div class="md:w-1/3">
                             <div class="glass p-4 rounded-xl text-center">
                                 <h3 class="text-2xl font-bold text-blue-600">第一周</h3>
@@ -373,7 +366,7 @@
                     </div>
                     
                     <!-- Timeline Item 2 -->
-                    <div class="flex flex-col md:flex-row gap-4 mb-12 animate-on-scroll delay-200">
+                    <div class="flex flex-col md:flex-row gap-4 mb-12 delay-200">
                         <div class="md:w-1/3">
                             <div class="glass p-4 rounded-xl text-center">
                                 <h3 class="text-2xl font-bold text-blue-600">第二周</h3>
@@ -392,7 +385,7 @@
                     </div>
                     
                     <!-- Timeline Item 3 -->
-                    <div class="flex flex-col md:flex-row gap-4 animate-on-scroll delay-300">
+                    <div class="flex flex-col md:flex-row gap-4 delay-300">
                         <div class="md:w-1/3">
                             <div class="glass p-4 rounded-xl text-center">
                                 <h3 class="text-2xl font-bold text-blue-600">冬季</h3>
@@ -402,7 +395,7 @@
                         <div class="md:w-2/3 glass p-6 rounded-xl hover-lift">
                             <h4 class="text-xl font-bold mb-2">冬季假期项目</h4>
                             <p class="text-gray-700">
-                                敬请期待我们的冬季假期项目详情。将提供类似的平衡发展课程，结合室内技术学习和户外活动。
+                                敬请期待我们的冬季假期项目详情。将提供类似的平衡发展课程，结合室内技术学习和户外���动。
                             </p>
                             <a href="winter-holiday-program.html" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">
                                 了解更多 <i class="fas fa-arrow-right ml-1"></i>
@@ -416,9 +409,9 @@
         <!-- Call to Action -->
         <section class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 animate-on-scroll">准备好加入我们了吗？</h2>
-                <p class="text-xl max-w-2xl mx-auto mb-8 animate-on-scroll delay-200">注册我们的假期项目，开始平衡发展之旅。</p>
-                <div class="animate-on-scroll delay-300">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">准备好加入我们了吗？</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8 delay-200">注册我们的假期项目，开始平衡发展之旅。</p>
+                <div class="delay-300">
                     <a href="spring-holiday-program.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg mr-4 mb-4 md:mb-0">
                         立即注册
                     </a>
@@ -432,7 +425,7 @@
         <!-- Testimonials -->
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
                     <span class="border-b-4 border-orange-500 pb-2">家长和学生的评价</span>
                 </h2>
                 
@@ -440,7 +433,7 @@
                     <!-- Testimonial Items -->
                     <div class="testimonial-items">
                         <!-- Item 1 -->
-                        <div class="testimonial-item active glass p-8 rounded-xl animate-on-scroll">
+                        <div class="testimonial-item active glass p-8 rounded-xl">
                             <div class="flex flex-col items-center text-center">
                                 <div class="text-orange-500 mb-4">
                                     <i class="fas fa-quote-left text-4xl"></i>
@@ -543,150 +536,105 @@
         </div>
     </footer>
 
-    <!-- Framer Motion -->
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    
     <!-- Custom Scripts -->
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Mobile Dropdown Toggle
-        document.getElementById('mobile-dropdown-button').addEventListener('click', function() {
-            const mobileDropdown = document.getElementById('mobile-dropdown');
-            mobileDropdown.classList.toggle('hidden');
-        });
-        
-        // Hero Carousel
-        const heroCarousel = {
-            items: document.querySelectorAll('#heroCarousel .carousel-item'),
-            indicators: document.querySelectorAll('#heroCarousel .indicator'),
-            prevButton: document.getElementById('prevButton'),
-            nextButton: document.getElementById('nextButton'),
-            currentIndex: 0,
-            interval: null,
-            
-            init: function() {
-                this.prevButton.addEventListener('click', () => this.prev());
-                this.nextButton.addEventListener('click', () => this.next());
-                
-                this.indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => this.goTo(index));
-                });
-                
-                this.startAutoplay();
-            },
-            
-            goTo: function(index) {
-                // Hide current item
-                this.items[this.currentIndex].classList.add('hidden');
-                this.items[this.currentIndex].classList.remove('active');
-                this.indicators[this.currentIndex].classList.remove('active');
-                this.indicators[this.currentIndex].classList.add('bg-white/40');
-                this.indicators[this.currentIndex].classList.remove('bg-white/70');
-                
-                // Show new item
-                this.currentIndex = index;
-                this.items[this.currentIndex].classList.remove('hidden');
-                this.items[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].classList.remove('bg-white/40');
-                this.indicators[this.currentIndex].classList.add('bg-white/70');
-            },
-            
-            next: function() {
-                const nextIndex = (this.currentIndex + 1) % this.items.length;
-                this.goTo(nextIndex);
-            },
-            
-            prev: function() {
-                const prevIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
-                this.goTo(prevIndex);
-            },
-            
-            startAutoplay: function() {
-                this.interval = setInterval(() => this.next(), 5000);
-            },
-            
-            stopAutoplay: function() {
-                clearInterval(this.interval);
-            }
-        };
-        
-        // Testimonial Carousel
-        const testimonialCarousel = {
-            items: document.querySelectorAll('#testimonialCarousel .testimonial-item'),
-            indicators: document.querySelectorAll('#testimonialCarousel .testimonial-indicator'),
-            currentIndex: 0,
-            interval: null,
-            
-            init: function() {
-                this.indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => this.goTo(index));
-                });
-                
-                this.startAutoplay();
-            },
-            
-            goTo: function(index) {
-                // Hide current item
-                this.items[this.currentIndex].classList.add('hidden');
-                this.items[this.currentIndex].classList.remove('active');
-                this.indicators[this.currentIndex].classList.remove('active');
-                this.indicators[this.currentIndex].classList.add('bg-blue-200');
-                this.indicators[this.currentIndex].classList.remove('bg-blue-300');
-                
-                // Show new item
-                this.currentIndex = index;
-                this.items[this.currentIndex].classList.remove('hidden');
-                this.items[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].classList.add('active');
-                this.indicators[this.currentIndex].classList.remove('bg-blue-200');
-                this.indicators[this.currentIndex].classList.add('bg-blue-300');
-            },
-            
-            next: function() {
-                const nextIndex = (this.currentIndex + 1) % this.items.length;
-                this.goTo(nextIndex);
-            },
-            
-            startAutoplay: function() {
-                this.interval = setInterval(() => this.next(), 6000);
-            },
-            
-            stopAutoplay: function() {
-                clearInterval(this.interval);
-            }
-        };
-        
-        // Initialize Scroll Animations
-        const animateOnScroll = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-        
-        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize carousels
-            heroCarousel.init();
-            testimonialCarousel.init();
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
             
-            // Initialize scroll animations
-            const observer = new IntersectionObserver(animateOnScroll, {
-                root: null,
-                threshold: 0.1,
-                rootMargin: '-50px'
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Mobile programs dropdown toggle
+            const mobileProgramsToggle = document.getElementById('mobile-programs-toggle');
+            const mobileProgramsMenu = document.getElementById('mobile-programs-menu');
+
+            if (mobileProgramsToggle && mobileProgramsMenu) {
+                mobileProgramsToggle.addEventListener('click', function() {
+                    mobileProgramsMenu.classList.toggle('hidden');
+                });
+            }
+
+            // AOS initialization
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+            });
+
+            // Carousel functionality
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentIndex = 0;
+            
+            function showSlide(index) {
+                carouselItems.forEach(item => item.classList.add('hidden'));
+                indicators.forEach(ind => ind.classList.remove('active'));
+                
+                carouselItems[index].classList.remove('hidden');
+                indicators[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+
+            function nextSlide() {
+                let newIndex = (currentIndex + 1) % carouselItems.length;
+                showSlide(newIndex);
+            }
+            
+            function prevSlide() {
+                let newIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                showSlide(newIndex);
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => { showSlide(index); });
             });
             
-            document.querySelectorAll('.animate-on-scroll').forEach(element => {
-                observer.observe(element);
+            // Auto-rotate every 5 seconds
+            let interval = setInterval(nextSlide, 5000);
+            
+            // Button controls
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+            // Pause on hover
+            const carousel = document.getElementById('heroCarousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(interval));
+            carousel.addEventListener('mouseleave', () => interval = setInterval(nextSlide, 5000));
+            
+            // Testimonial Carousel
+            const testimonialItems = document.querySelectorAll('#testimonialCarousel .testimonial-item');
+            const testimonialIndicators = document.querySelectorAll('#testimonialCarousel .testimonial-indicator');
+            let testimonialCurrentIndex = 0;
+            let testimonialInterval = null;
+
+            function showTestimonial(index) {
+                testimonialItems.forEach(item => item.classList.add('hidden'));
+                testimonialIndicators.forEach(ind => ind.classList.remove('active'));
+                testimonialIndicators.forEach(ind => ind.classList.add('bg-blue-200'));
+                testimonialIndicators.forEach(ind => ind.classList.remove('bg-blue-300'));
+
+                testimonialItems[index].classList.remove('hidden');
+                testimonialIndicators[index].classList.add('active');
+                testimonialIndicators[index].classList.remove('bg-blue-200');
+                testimonialIndicators[index].classList.add('bg-blue-300');
+                testimonialCurrentIndex = index;
+            }
+
+            function nextTestimonial() {
+                let newIndex = (testimonialCurrentIndex + 1) % testimonialItems.length;
+                showTestimonial(newIndex);
+            }
+
+            testimonialIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => showTestimonial(index));
             });
         });
     </script>
