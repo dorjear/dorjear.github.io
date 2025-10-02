@@ -364,7 +364,12 @@
                     <a href="spring-holiday-program.html" class="inline-block bg-sunsetOrange hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg mr-4 mb-4 md:mb-0">
                         Register Now
                     </a>
-                    <a href="our-approach.html" class="inline-block bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full border-2 border-white transition-colors text-lg">
+                    <a href="our-approach.html" class="inline-block bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full border-2 border-white transition-colors text-lg"
+                       onclick="gtag('event', 'learn_more_click', {
+                         button_text: 'Learn More - Hero', // Use a specific label to identify this button
+                         page_location: window.location.href,
+                         transport_type: 'beacon'
+                       });">
                         Learn More
                     </a>
                 </div>
