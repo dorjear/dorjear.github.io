@@ -19,9 +19,10 @@
             theme: {
                 extend: {
                     colors: {
-                        techBlue: '#3498db',
-                        energyOrange: '#e67e22',
-                        natureGreen: '#2ecc71',
+                        forestGreen: '#22543d',
+                        sunsetOrange: '#dd6b20',
+                        sandstone: '#f7fafc',
+                        skyBlue: '#4299e1',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -33,13 +34,14 @@
     <style type="text/css">
         /* Custom CSS */
         :root {
-            --tech-blue: #3498db;
-            --energy-orange: #e67e22;
-            --nature-green: #2ecc71;
+            --forest-green: '#22543d';
+            --sunset-orange: '#dd6b20';
+            --sandstone: '#f7fafc';
+            --sky-blue: '#4299e1';
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #d2d6dc 100%);
             background-attachment: fixed;
             font-family: 'Inter', sans-serif;
         }
@@ -54,7 +56,7 @@
         
         /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            background: linear-gradient(90deg, var(--forest-green), var(--sunset-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -100,11 +102,11 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
-                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="index.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Home</a>
+                    <a href="about.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                        <button class="text-forestGreen hover:text-sunsetOrange transition-colors flex items-center">
                             Programs
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -117,12 +119,12 @@
                             </div>
                         </div>
                     </div>
-                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
-                    <a href="contact.html" class="text-techBlue font-semibold">Contact Us</a>
+                    <a href="activities.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Activities</a>
+                    <a href="contact.html" class="text-forestGreen font-semibold">Contact Us</a>
                 </div>
                 
                 <!-- Mobile Navigation Toggle -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-forestGreen focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -131,21 +133,21 @@
             
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
-                <a href="index.html" class="block py-2 text-gray-800">Home</a>
-                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
-                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
-                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                <a href="index.html" class="block py-2 text-forestGreen">Home</a>
+                <a href="about.html" class="block py-2 text-forestGreen">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-forestGreen">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-forestGreen">
                     <span>Programs</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
                 <div id="mobile-programs-menu" class="hidden pl-4">
-                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
-                    <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
+                    <a href="spring-holiday-program.html" class="block py-2 text-forestGreen">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-forestGreen">Winter Holiday Program</a>
                 </div>
-                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
-                <a href="contact.html" class="block py-2 text-techBlue font-semibold">Contact Us</a>
+                <a href="activities.html" class="block py-2 text-forestGreen">Activities</a>
+                <a href="contact.html" class="block py-2 text-forestGreen font-semibold">Contact Us</a>
             </div>
         </nav>
     </header>
@@ -155,7 +157,7 @@
         <!-- Hero Section -->
         <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up">
             <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Contact Us</h1>
-            <p class="text-lg text-gray-700 max-w-4xl">
+            <p class="text-lg text-forestGreen max-w-4xl">
                 Have questions about our programs or want to register your child? We'd love to hear from you! Reach out to us using any of the methods below, and our team will get back to you as soon as possible.
             </p>
         </section>
@@ -165,39 +167,39 @@
             <!-- Phone Contact -->
             <div class="contact-card glass rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-techBlue bg-opacity-20 flex items-center justify-center mr-4">
-                        <i class="fas fa-phone text-techBlue text-2xl icon-pulse"></i>
+                    <div class="w-12 h-12 rounded-full bg-forestGreen bg-opacity-20 flex items-center justify-center mr-4">
+                        <i class="fas fa-phone text-forestGreen text-2xl icon-pulse"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Call Us</h2>
+                    <h2 class="text-2xl font-bold text-forestGreen">Call Us</h2>
                 </div>
-                <p class="text-gray-700 mb-2">For immediate assistance:</p>
-                <a href="tel:+61412345678" class="text-xl font-semibold text-techBlue hover:underline transition-colors">+61 412 345 678</a>
+                <p class="text-forestGreen mb-2">For immediate assistance:</p>
+                <a href="tel:+61412345678" class="text-xl font-semibold text-forestGreen hover:underline transition-colors">+61 412 345 678</a>
                 <p class="text-gray-600 mt-2">Available Monday-Friday, 9am-5pm</p>
             </div>
 
             <!-- Email Contact -->
             <div class="contact-card glass rounded-2xl p-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-energyOrange bg-opacity-20 flex items-center justify-center mr-4">
-                        <i class="fas fa-envelope text-energyOrange text-2xl icon-pulse"></i>
+                    <div class="w-12 h-12 rounded-full bg-sunsetOrange bg-opacity-20 flex items-center justify-center mr-4">
+                        <i class="fas fa-envelope text-sunsetOrange text-2xl icon-pulse"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Email Us</h2>
+                    <h2 class="text-2xl font-bold text-forestGreen">Email Us</h2>
                 </div>
-                <p class="text-gray-700 mb-2">Send us a message anytime:</p>
-                <a href="mailto:info@aiyouth.com.au" class="text-xl font-semibold text-energyOrange hover:underline transition-colors">info@aiyouth.com.au</a>
+                <p class="text-forestGreen mb-2">Send us a message anytime:</p>
+                <a href="mailto:info@aiyouth.com.au" class="text-xl font-semibold text-sunsetOrange hover:underline transition-colors">info@aiyouth.com.au</a>
                 <p class="text-gray-600 mt-2">We'll respond within 24 hours</p>
             </div>
 
             <!-- WhatsApp Contact -->
             <div class="contact-card glass rounded-2xl p-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-natureGreen bg-opacity-20 flex items-center justify-center mr-4">
-                        <i class="fab fa-whatsapp text-natureGreen text-2xl icon-pulse"></i>
+                    <div class="w-12 h-12 rounded-full bg-sandstone bg-opacity-20 flex items-center justify-center mr-4">
+                        <i class="fab fa-whatsapp text-sandstone text-2xl icon-pulse"></i>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">WhatsApp</h2>
                 </div>
                 <p class="text-gray-700 mb-2">Chat with us on WhatsApp:</p>
-                <p class="text-xl font-semibold text-natureGreen">Scan the QR code below</p>
+                <p class="text-xl font-semibold text-sandstone">Scan the QR code below</p>
                 <div class="mt-4 flex justify-center">
                     <img src="images/whatsapp-qr.png" alt="WhatsApp QR Code" class="w-32 h-32">
                 </div>
@@ -235,8 +237,7 @@
                 </div>
                 <p class="text-gray-700 mb-6">Fill out our contact form and we'll get back to you as soon as possible.</p>
                 <div class="rounded-xl overflow-hidden h-96">
-                    <div data-tf-widget="Ow1jbKJM" data-tf-opacity="100" data-tf-iframe-props="title=AI Youth Contact Form" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
-                    <script src="//embed.typeform.com/next/embed.js"></script>
+                    <div data-tf-live="01JZY5QM0ZMBFE73K9A9BG7MJD"></div><script src="https://embed.typeform.com/next/embed.js"></script>
                 </div>
             </div>
         </div>

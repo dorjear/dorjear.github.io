@@ -19,9 +19,10 @@
             theme: {
                 extend: {
                     colors: {
-                        techBlue: '#3498db',
-                        energyOrange: '#e67e22',
-                        natureGreen: '#2ecc71',
+                        forestGreen: '#22543d',
+                        sunsetOrange: '#dd6b20',
+                        sandstone: '#f7fafc',
+                        skyBlue: '#4299e1',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -33,13 +34,14 @@
     <style type="text/css">
         /* Custom CSS */
         :root {
-            --tech-blue: #3498db;
-            --energy-orange: #e67e22;
-            --nature-green: #2ecc71;
+            --forest-green: '#22543d';
+            --sunset-orange: '#dd6b20';
+            --sandstone: '#f7fafc';
+            --sky-blue: '#4299e1';
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #d2d6dc 100%);
             background-attachment: fixed;
             font-family: 'Inter', sans-serif;
         }
@@ -54,7 +56,7 @@
         
         /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            background: linear-gradient(90deg, var(--forest-green), var(--sunset-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -87,7 +89,7 @@
         }
         
         .category-pill:hover, .category-pill.active {
-            background-color: var(--tech-blue);
+            background-color: var(--forest-green);
             color: white;
         }
     </style>
@@ -104,11 +106,11 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
-                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="index.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Home</a>
+                    <a href="about.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                        <button class="text-forestGreen hover:text-sunsetOrange transition-colors flex items-center">
                             Programs
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -116,17 +118,17 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                             <div class="py-1">
-                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spring Holiday Program</a>
-                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Winter Holiday Program</a>
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-forestGreen hover:bg-gray-100">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-forestGreen hover:bg-gray-100">Winter Holiday Program</a>
                             </div>
                         </div>
                     </div>
-                    <a href="activities.html" class="text-techBlue font-semibold">Activities</a>
-                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
+                    <a href="activities.html" class="text-forestGreen font-semibold">Activities</a>
+                    <a href="contact.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Contact Us</a>
                 </div>
                 
                 <!-- Mobile Navigation Toggle -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-forestGreen focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -135,20 +137,20 @@
             
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
-                <a href="index.html" class="block py-2 text-gray-800">Home</a>
-                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
-                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
-                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                <a href="index.html" class="block py-2 text-forestGreen">Home</a>
+                <a href="about.html" class="block py-2 text-forestGreen">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-forestGreen">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-forestGreen">
                     <span>Programs</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
                 <div id="mobile-programs-menu" class="hidden pl-4">
-                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
-                    <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
+                    <a href="spring-holiday-program.html" class="block py-2 text-forestGreen">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-forestGreen">Winter Holiday Program</a>
                 </div>
-                <a href="activities.html" class="block py-2 text-techBlue font-semibold">Activities</a>
+                <a href="activities.html" class="block py-2 text-forestGreen font-semibold">Activities</a>
                 <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
             </div>
         </nav>
@@ -159,7 +161,7 @@
         <!-- Hero Section -->
         <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up">
             <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Our Activities</h1>
-            <p class="text-lg text-gray-700 max-w-4xl">
+            <p class="text-lg text-forestGreen max-w-4xl">
                 We offer a diverse range of activities designed to develop both practical skills and digital literacy. Our programs balance outdoor adventures, life skills, and technology education to create well-rounded individuals who can thrive in the AI era.
             </p>
         </section>
@@ -183,9 +185,9 @@
                     <img src="images/tent.jpeg" alt="Tent Building" class="w-full h-full object-cover scale-on-hover">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold text-techBlue mb-2">Tent Building</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-2">Tent Building</h3>
                     <p class="text-sm text-gray-500 mb-3">Duration: 1.5 hours</p>
-                    <p class="text-gray-700">
+                    <p class="text-forestGreen">
                         Learn how to set up different types of tents and shelters, understanding the importance of proper site selection and tent orientation for various weather conditions.
                     </p>
                 </div>
@@ -196,7 +198,7 @@
                     <img src="images/knots.jpg" alt="Knot Tying" class="w-full h-full object-cover scale-on-hover">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold text-techBlue mb-2">Knot Tying</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-2">Knot Tying</h3>
                     <p class="text-sm text-gray-500 mb-3">Duration: 1 hour</p>
                     <p class="text-gray-700">
                         Master essential knots for outdoor activities, including the bowline, clove hitch, and taut-line hitch, understanding when and how to use each knot effectively.

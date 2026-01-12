@@ -19,9 +19,10 @@
             theme: {
                 extend: {
                     colors: {
-                        techBlue: '#3498db',
-                        energyOrange: '#e67e22',
-                        natureGreen: '#2ecc71',
+                        forestGreen: '#22543d',
+                        sunsetOrange: '#dd6b20',
+                        sandstone: '#f7fafc',
+                        skyBlue: '#4299e1',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -33,13 +34,14 @@
     <style type="text/css">
         /* Custom CSS */
         :root {
-            --tech-blue: #3498db;
-            --energy-orange: #e67e22;
-            --nature-green: #2ecc71;
+            --forest-green: '#22543d';
+            --sunset-orange: '#dd6b20';
+            --sandstone: '#f7fafc';
+            --sky-blue: '#4299e1';
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #d2d6dc 100%);
             background-attachment: fixed;
             font-family: 'Inter', sans-serif;
         }
@@ -54,7 +56,7 @@
         
         /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            background: linear-gradient(90deg, var(--forest-green), var(--sunset-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -72,7 +74,7 @@
         
         /* Promo badge */
         .promo-badge {
-            background: linear-gradient(90deg, var(--energy-orange), var(--tech-blue));
+            background: linear-gradient(90deg, var(--sunset-orange), var(--forest-green));
             color: white;
             transform: rotate(-2deg);
         }
@@ -81,7 +83,7 @@
         .number-highlight {
             font-size: 3rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--tech-blue), var(--nature-green));
+            background: linear-gradient(90deg, var(--forest-green), var(--sunset-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -100,11 +102,11 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-800 hover:text-techBlue transition-colors">About Us</a>
-                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="index.html" class="text-gray-800 hover:text-forestGreen transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-800 hover:text-forestGreen transition-colors">About Us</a>
+                    <a href="our-approach.html" class="text-gray-800 hover:text-forestGreen transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                        <button class="text-gray-800 hover:text-forestGreen transition-colors flex items-center">
                             Programs
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -112,17 +114,17 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                             <div class="py-1">
-                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spring Holiday Program</a>
-                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold text-techBlue">Winter Holiday Program</a>
+                                <a href="spring-holiday-program.html" class="block px-4 py-2 text-sm text-forestGreen">Spring Holiday Program</a>
+                                <a href="winter-holiday-program.html" class="block px-4 py-2 text-sm text-forestGreen font-semibold">Winter Holiday Program</a>
                             </div>
                         </div>
                     </div>
-                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
-                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
+                    <a href="activities.html" class="text-gray-800 hover:text-forestGreen transition-colors">Activities</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-forestGreen transition-colors">Contact Us</a>
                 </div>
                 
                 <!-- Mobile Navigation Toggle -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-forestGreen focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -131,21 +133,21 @@
             
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
-                <a href="index.html" class="block py-2 text-gray-800">Home</a>
-                <a href="about.html" class="block py-2 text-gray-800">About Us</a>
-                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
-                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                <a href="index.html" class="block py-2 text-forestGreen">Home</a>
+                <a href="about.html" class="block py-2 text-forestGreen">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-forestGreen">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-forestGreen">
                     <span>Programs</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
                 <div id="mobile-programs-menu" class="hidden pl-4">
-                    <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
-                    <a href="winter-holiday-program.html" class="block py-2 text-techBlue font-semibold">Winter Holiday Program</a>
+                    <a href="spring-holiday-program.html" class="block py-2 text-forestGreen">Spring Holiday Program</a>
+                    <a href="winter-holiday-program.html" class="block py-2 text-forestGreen font-semibold">Winter Holiday Program</a>
                 </div>
-                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
-                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
+                <a href="activities.html" class="block py-2 text-forestGreen">Activities</a>
+                <a href="contact.html" class="block py-2 text-forestGreen">Contact Us</a>
             </div>
         </nav>
     </header>
@@ -159,14 +161,14 @@
                     Early Bird Discount: 15% OFF
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Winter Holiday Program 2023</h1>
-                <p class="text-lg text-gray-700 max-w-4xl mb-6">
+                <p class="text-lg text-forestGreen max-w-4xl mb-6">
                     Join us this winter for an exciting blend of technology, creativity, and outdoor activities. Our program is designed to help children develop essential digital skills while maintaining a healthy balance with physical activities and social interaction.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#register" class="bg-techBlue hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                    <a href="#register" class="bg-forestGreen hover:bg-forestGreen-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
                         Register Now
                     </a>
-                    <a href="#schedule" class="bg-white hover:bg-gray-100 text-techBlue font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg border border-techBlue">
+                    <a href="#schedule" class="bg-white hover:bg-gray-100 text-forestGreen font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg border border-forestGreen">
                         View Schedule
                     </a>
                 </div>
@@ -175,29 +177,29 @@
 
         <!-- Program Overview -->
         <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Program Overview</h2>
+            <h2 class="text-3xl font-bold mb-6 text-forestGreen">Program Overview</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div class="text-center" data-aos="fade-up" data-aos-delay="150">
                     <div class="number-highlight mb-2">5</div>
-                    <p class="text-lg font-semibold text-gray-700">Days of Learning</p>
+                    <p class="text-lg font-semibold text-forestGreen">Days of Learning</p>
                 </div>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="number-highlight mb-2">20+</div>
-                    <p class="text-lg font-semibold text-gray-700">Engaging Activities</p>
+                    <p class="text-lg font-semibold text-forestGreen">Engaging Activities</p>
                 </div>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="250">
                     <div class="number-highlight mb-2">10:1</div>
-                    <p class="text-lg font-semibold text-gray-700">Student-Teacher Ratio</p>
+                    <p class="text-lg font-semibold text-forestGreen">Student-Teacher Ratio</p>
                 </div>
             </div>
-            <p class="text-lg text-gray-700">
+            <p class="text-lg text-forestGreen">
                 Our Winter Holiday Program runs from <span class="font-semibold">July 10-14, 2023</span>, from <span class="font-semibold">9:00 AM to 3:30 PM</span> daily. The program is designed for children aged 8-14 and includes a balanced mix of technology workshops, creative projects, and outdoor activities.
             </p>
         </section>
 
         <!-- Parent Information -->
         <section class="glass rounded-3xl p-8 mb-12" data-aos="fade-up" data-aos-delay="150" id="parent-info">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Parent Information</h2>
+            <h2 class="text-3xl font-bold mb-6 text-forestGreen">Parent Information</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass rounded-2xl p-6 h-full">
                     <div class="flex items-center mb-4">

@@ -19,9 +19,10 @@
             theme: {
                 extend: {
                     colors: {
-                        techBlue: '#3498db',
-                        energyOrange: '#e67e22',
-                        natureGreen: '#2ecc71',
+                        forestGreen: '#22543d',
+                        sunsetOrange: '#dd6b20',
+                        sandstone: '#f7fafc',
+                        skyBlue: '#4299e1',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -33,13 +34,14 @@
     <style type="text/css">
         /* Custom CSS */
         :root {
-            --tech-blue: #3498db;
-            --energy-orange: #e67e22;
-            --nature-green: #2ecc71;
+            --forest-green: #22543d;
+            --sunset-orange: #dd6b20;
+            --sandstone: #f7fafc;
+            --sky-blue: #4299e1;
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #d2d6dc 100%);
             background-attachment: fixed;
             font-family: 'Inter', sans-serif;
         }
@@ -54,7 +56,7 @@
         
         /* Gradient text */
         .gradient-text {
-            background: linear-gradient(90deg, var(--tech-blue), var(--energy-orange));
+            background: linear-gradient(90deg, var(--forest-green), var(--sunset-orange));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -92,11 +94,11 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-800 hover:text-techBlue transition-colors">Home</a>
-                    <a href="about.html" class="text-techBlue font-semibold">About Us</a>
-                    <a href="our-approach.html" class="text-gray-800 hover:text-techBlue transition-colors">Our Approach</a>
+                    <a href="index.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Home</a>
+                    <a href="about.html" class="text-forestGreen font-semibold">About Us</a>
+                    <a href="our-approach.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Our Approach</a>
                     <div class="relative group">
-                        <button class="text-gray-800 hover:text-techBlue transition-colors flex items-center">
+                        <button class="text-forestGreen hover:text-sunsetOrange transition-colors flex items-center">
                             Programs
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -109,8 +111,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="activities.html" class="text-gray-800 hover:text-techBlue transition-colors">Activities</a>
-                    <a href="contact.html" class="text-gray-800 hover:text-techBlue transition-colors">Contact Us</a>
+                    <a href="activities.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Activities</a>
+                    <a href="contact.html" class="text-forestGreen hover:text-sunsetOrange transition-colors">Contact Us</a>
                 </div>
                 
                 <!-- Mobile Navigation Toggle -->
@@ -123,10 +125,10 @@
             
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
-                <a href="index.html" class="block py-2 text-gray-800">Home</a>
-                <a href="about.html" class="block py-2 text-techBlue font-semibold">About Us</a>
-                <a href="our-approach.html" class="block py-2 text-gray-800">Our Approach</a>
-                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-gray-800">
+                <a href="index.html" class="block py-2 text-forestGreen">Home</a>
+                <a href="about.html" class="block py-2 text-forestGreen font-semibold">About Us</a>
+                <a href="our-approach.html" class="block py-2 text-forestGreen">Our Approach</a>
+                <button id="mobile-programs-toggle" class="flex justify-between items-center w-full py-2 text-forestGreen">
                     <span>Programs</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -136,8 +138,8 @@
                     <a href="spring-holiday-program.html" class="block py-2 text-gray-800">Spring Holiday Program</a>
                     <a href="winter-holiday-program.html" class="block py-2 text-gray-800">Winter Holiday Program</a>
                 </div>
-                <a href="activities.html" class="block py-2 text-gray-800">Activities</a>
-                <a href="contact.html" class="block py-2 text-gray-800">Contact Us</a>
+                <a href="activities.html" class="block py-2 text-forestGreen">Activities</a>
+                <a href="contact.html" class="block py-2 text-forestGreen">Contact Us</a>
             </div>
         </nav>
     </header>
@@ -159,7 +161,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Team Member 1 -->
                 <div class="team-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="50">
-                    <h3 class="text-xl font-semibold text-techBlue mb-3">Tony</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-3">Tony</h3>
                     <p class="text-gray-700">
                         With a rich background as an AI Product Manager at Westpac, a former Training Manager at HSBC Academy, and a Senior Trainer at JR Academy, Tony brings a wealth of experience in delivering engaging AI courses and workshops. As a certified enterprise trainer and a youth soccer coach, he is skilled at making complex topics accessible and fun for all ages.
                     </p>
@@ -167,7 +169,7 @@
                 
                 <!-- Team Member 2 -->
                 <div class="team-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-semibold text-techBlue mb-3">Prasad</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-3">Prasad</h3>
                     <p class="text-gray-700">
                         Prasad is a certified NSW teacher, and a dedicated Scout Cubs leader. Her expertise lies in leading outdoor programs and activities, where he has extensive experience in fostering teamwork, resilience, and a love for nature. She has also taught Chinese courses, adding to her diverse teaching background.
                     </p>
@@ -175,7 +177,7 @@
                 
                 <!-- Team Member 3 -->
                 <div class="team-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="150">
-                    <h3 class="text-xl font-semibold text-techBlue mb-3">Rodney</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-3">Rodney</h3>
                     <p class="text-gray-700">
                         Rodney is a youth leader for several churches, having organized numerous activities and participated in multiple volunteer organizations. He is constantly involved in organizing events and bringing people together.
                     </p>
@@ -183,7 +185,7 @@
                 
                 <!-- Team Member 4 -->
                 <div class="team-card glass rounded-2xl p-6 h-full" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-xl font-semibold text-techBlue mb-3">Melvin</h3>
+                    <h3 class="text-xl font-semibold text-forestGreen mb-3">Melvin</h3>
                     <p class="text-gray-700">
                         Melvin is a dynamic 15-year-old high school student and a star Patrol Leader in the Scouts. He is a natural leader and a role model for his peers, popular among kids aged 7 to 15. Melvin is passionate about outdoor activities and is also a skilled cook, bringing youthful energy and relatable leadership to our programs.
                     </p>
